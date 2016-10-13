@@ -1,0 +1,16 @@
+{
+  "name": "application-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for application-backend. Built with Angular 2.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular",
+    "2",
+    "frontend"
+  ],
+  "author": "balint.marci@gmail.com",
+  "license": "MIT"
+}
