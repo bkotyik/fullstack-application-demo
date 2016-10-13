@@ -31,6 +31,6 @@ export default class Occupation {
     }
 
     public set Description(value: string) {
-
+        this.description = value;
     }
 }
