@@ -12,5 +12,12 @@
     "rest"
   ],
   "author": "balint.marci@gmail.com",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "tslint": "^3.15.1",
+    "typescript": "^2.0.3"
+  }
 }
