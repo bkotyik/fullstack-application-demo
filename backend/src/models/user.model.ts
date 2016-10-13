@@ -1,3 +1,5 @@
+import Occupation from "./occupation.model";
+
 /**
  * Describes a User with all his/her important properties
  */
@@ -5,11 +7,11 @@ export default class User {
     private id: number;
     private name: string;
     private email: string;
-    private occupation: string;
+    private occupation: Occupation;
     private birthday: Date;
 
     constructor(obj?: any) {
-        //TODO: Implement parsing of User
+        // TODO: Implement parsing of User
     }
 
     public get Id(): number {
@@ -36,11 +38,11 @@ export default class User {
         this.email = value;
     }
 
-    public get Occupation(): string {
+    public get Occupation(): Occupation {
         return this.occupation;
     }
 
-    public set Occupation(value: string) {
+    public set Occupation(value: Occupation) {
         this.occupation = value;
     }
 
