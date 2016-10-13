@@ -18,6 +18,7 @@
     "express": "^4.14.0"
   },
   "devDependencies": {
+    "@types/express": "^4.0.33",
     "tslint": "^3.15.1",
     "typescript": "^2.0.3"
   }
