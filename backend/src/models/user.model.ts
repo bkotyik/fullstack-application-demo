@@ -2,16 +2,25 @@
  * Describes a User with all his/her important properties
  */
 export default class User {
+    private id: number;
     private name: string;
     private email: string;
     private occupation: string;
     private birthday: Date;
 
     constructor(obj?: any) {
-
+        //TODO: Implement parsing of User
     }
 
-    public get Name() {
+    public get Id(): number {
+        return this.id;
+    }
+
+    public set Id(value: number) {
+        this.id = value;
+    }
+
+    public get Name(): string {
         return this.name;
     }
 
@@ -19,7 +28,7 @@ export default class User {
         this.name = value;
     }
 
-    public get Email() {
+    public get Email(): string {
         return this.email;
     }
 
@@ -35,7 +44,7 @@ export default class User {
         this.occupation = value;
     }
 
-    public get Birthday() {
+    public get Birthday(): Date {
         return this.birthday;
     }
 
