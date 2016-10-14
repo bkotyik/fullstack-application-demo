@@ -9,7 +9,6 @@
     "tslint": "tslint src/**/*.ts",
     "ts": "tsc -p tsconfig.json --outDir dist/",
     "test:unit": "mocha dist/**/**/*.spec.js"
-
   },
   "keywords": [
     "node",
@@ -19,6 +18,8 @@
   "author": "balint.marci@gmail.com",
   "license": "MIT",
   "dependencies": {
+    "@types/body-parser": "0.0.33",
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "joi": "^9.1.1"
   },
