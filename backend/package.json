@@ -4,9 +4,12 @@
   "description": "REST backend based on expressJS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run tslint && npm run ts",
+    "test": "npm run test:unit",
     "tslint": "tslint src/**/*.ts",
-    "ts": "tsc -p tsconfig.json --outDir dist/"
+    "ts": "tsc -p tsconfig.json --outDir dist/",
+    "test:unit": "mocha dist/**/**/*.spec.js"
+
   },
   "keywords": [
     "node",

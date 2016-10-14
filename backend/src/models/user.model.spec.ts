@@ -29,4 +29,19 @@ describe("User model", function () {
         );
     });
 
+    it("requires email to be set", function(done: Function) {
+        user.Email = undefined;
+
+        user.validate().then(
+            (value: ValidationResult<User>) => {
+                done(Error("Validation should fail when Email is not defined."));
+            },
+            (error: ValidationError) => {
+                expect(error.details.length).to.eq(1);
+                expect(error.details[0].path).to.eq("email");
+                done();
+            }
+        );
+    })
+
 });
