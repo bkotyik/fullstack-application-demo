@@ -18,8 +18,11 @@ export default class User {
     });
 
     constructor(obj?: any) {
-        // TODO: Implement parsing of User
-
+        this.id = obj.id || null;
+        this.name = obj.name || null;
+        this.birthday = obj.birthday ? new Date(obj.birthday) : null;
+        this.email = obj.email || null;
+        this.occupation = obj.occupation ? new Occupation(obj.occupation) : null;
     }
 
     public get Id(): number {
@@ -34,7 +37,7 @@ export default class User {
         return this.name;
     }
 
-    public set Name(value: string){
+    public set Name(value: string) {
         this.name = value;
     }
 
@@ -64,12 +67,12 @@ export default class User {
 
     public validate(): Promise<any> {
         let promise = new Promise<any>((resolve: Function, reject: Function) => {
-            Joi.validate(this, this.schema, (err: Joi.ValidationError, value: Joi.ValidationResult<User>) => {
-               if (err != null) {
-                   reject(err);
-               } else {
-                   resolve(value);
-               }
+            Joi.validate(this, this.schema, {allowUnknown: true }, (err: Joi.ValidationError, value: Joi.ValidationResult<User>) => {
+                if (err != null) {
+                    reject(err);
+                } else {
+                    resolve(value);
+                }
             });
         });
 

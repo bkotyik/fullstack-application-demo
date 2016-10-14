@@ -1,5 +1,6 @@
 import User from "./user.model";
 import {ValidationError, ValidationResult} from "joi";
+import {expect} from "chai";
 
 describe("User model", function () {
     let user: User;
@@ -15,12 +16,15 @@ describe("User model", function () {
 
     it("requires name to be set", function (done: Function) {
         user.Name = undefined;
+
         user.validate().then(
             (value: ValidationResult<User>) => {
-                done();
+                done(Error("Validation should fail when Name is not defined."));
             },
             (error: ValidationError) => {
-                done(error);
+                expect(error.details.length).to.eq(1);
+                expect(error.details[0].path).to.eq("name");
+                done();
             }
         );
     });
