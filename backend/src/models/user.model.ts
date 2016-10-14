@@ -1,5 +1,6 @@
 import Occupation from "./occupation.model";
 import * as Joi from "joi";
+import MinAgeValidator from "./validators/minage.joi.validators";
 
 /**
  * Describes a User with all his/her important properties
@@ -11,10 +12,12 @@ export default class User {
     private occupation: Occupation;
     private birthday: Date;
 
-    private schema = Joi.object().keys({
-        name: Joi.string().required(),
-        email: Joi.string().email().required(),
-        birthday: Joi.date()
+    private extendedJoi = Joi.extend(new MinAgeValidator());
+
+    private schema = this.extendedJoi.object().keys({
+        name: this.extendedJoi.string().required(),
+        email: this.extendedJoi.string().email().required(),
+        birthday: this.extendedJoi.date().minAge(18)
     });
 
     constructor(obj?: any) {
@@ -67,7 +70,7 @@ export default class User {
 
     public validate(): Promise<any> {
         let promise = new Promise<any>((resolve: Function, reject: Function) => {
-            Joi.validate(this, this.schema, {allowUnknown: true }, (err: Joi.ValidationError, value: Joi.ValidationResult<User>) => {
+            Joi.validate(this, this.schema, {allowUnknown: true }, (err: Joi.ValidationError, value: User) => {
                 if (err != null) {
                     reject(err);
                 } else {

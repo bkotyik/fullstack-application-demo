@@ -42,6 +42,6 @@ describe("User model", function () {
                 done();
             }
         );
-    })
+    });
 
 });
