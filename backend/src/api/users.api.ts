@@ -1,3 +1,4 @@
+/// <reference path="../../tsd.d.ts" />
 import {Router} from "express";
 
 export default function UsersApi(deps?: any) {
