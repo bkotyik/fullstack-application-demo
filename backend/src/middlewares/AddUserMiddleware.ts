@@ -2,7 +2,7 @@
 import {Request, Response} from "express";
 import UserModel from "../models/user.model";
 
-export default function AddUserMiddleware(deps: any) {
+export default function AddUserMiddleware(deps?: any) {
     return function(request: Request, response: Response, next: Function) {
         let model: UserModel = null;
         try {
