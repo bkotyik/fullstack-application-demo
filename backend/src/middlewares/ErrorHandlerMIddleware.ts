@@ -1,19 +1,22 @@
 import {Request, Response} from "express";
+import WebError from "../models/weberror.model";
 
 export default function(deps?: any) {
-    return function(req: Request, res: Response, next: Function, error: any) {
+    return function( error: WebError, req: Request, res: Response, next: Function) {
         let errorResponse = {
             message: "Internal server error",
             status: 500,
-            details: []
+            code: "INTERNAL_SERVER_ERROR",
+            details: "Please contact system administrator"
         };
 
         if (error != null) {
-            errorResponse.message = error.message || errorResponse.message;
-            errorResponse.details = error.message || errorResponse.details;
-            errorResponse.status = error.status || errorResponse.status;
+            errorResponse.message = error.InnerError.message || errorResponse.message;
+            errorResponse.details = error.InnerError.details || errorResponse.details;
+            errorResponse.code = error.ErrorCode || errorResponse.code;
+            errorResponse.status = error.Status || errorResponse.status;
         }
 
-        resp.json(errorResponse);
+        res.status(errorResponse.status).json(errorResponse);
     };
 }
