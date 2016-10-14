@@ -1,10 +1,11 @@
-import UserModel from "./user.model";
+import User from "./user.model";
+import {ValidationError, ValidationResult} from "joi";
 
 describe("User model", function () {
-    let user: UserModel;
+    let user: User;
 
     beforeEach(function () {
-        user = new UserModel({
+        user = new User({
             id: 0,
             name: "Test User",
             email: "test@fake.com",
@@ -14,6 +15,14 @@ describe("User model", function () {
 
     it("requires name to be set", function (done: Function) {
         user.Name = undefined;
+        user.validate().then(
+            (value: ValidationResult<User>) => {
+                done();
+            },
+            (error: ValidationError) => {
+                done(error);
+            }
+        );
     });
 
 });

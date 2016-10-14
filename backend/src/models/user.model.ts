@@ -1,4 +1,5 @@
 import Occupation from "./occupation.model";
+import * as Joi from "joi";
 
 /**
  * Describes a User with all his/her important properties
@@ -10,8 +11,15 @@ export default class User {
     private occupation: Occupation;
     private birthday: Date;
 
+    private schema = Joi.object().keys({
+        name: Joi.string().required(),
+        email: Joi.string().email().required(),
+        birthday: Joi.date()
+    });
+
     constructor(obj?: any) {
         // TODO: Implement parsing of User
+
     }
 
     public get Id(): number {
@@ -52,6 +60,20 @@ export default class User {
 
     public set Birthday(value: Date) {
         this.birthday = value;
+    }
+
+    public validate(): Promise<any> {
+        let promise = new Promise<any>((resolve: Function, reject: Function) => {
+            Joi.validate(this, this.schema, (err: Joi.ValidationError, value: Joi.ValidationResult<User>) => {
+               if (err != null) {
+                   reject(err);
+               } else {
+                   resolve(value);
+               }
+            });
+        });
+
+        return promise;
     }
 
 }
