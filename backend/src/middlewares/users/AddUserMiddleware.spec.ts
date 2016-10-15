@@ -6,7 +6,7 @@ import {expect} from "chai";
 import WebError from "../../models/weberror.model";
 
 describe("AddUserMiddleware", function () {
-    let addUserMiddleware: AddUserMiddleware = null;
+    let addUserMiddleware: Function = null;
     let mockRequest: any = null;
     let mockResponse: any = null;
     let next: sinon.SinonSpy = null;

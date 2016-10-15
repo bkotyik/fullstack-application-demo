@@ -11,8 +11,10 @@ export default function(deps?: any) {
         };
 
         if (error != null) {
-            errorResponse.message = error.InnerError.message || errorResponse.message;
-            errorResponse.details = error.InnerError.details || errorResponse.details;
+            if (error.InnerError != null) {
+                errorResponse.message = error.InnerError.message || errorResponse.message;
+                errorResponse.details = error.InnerError.details || errorResponse.details;
+            }
             errorResponse.code = error.ErrorCode || errorResponse.code;
             errorResponse.status = error.Status || errorResponse.status;
         }
