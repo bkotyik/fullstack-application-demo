@@ -21,11 +21,13 @@ export default class User {
     });
 
     constructor(obj?: any) {
-        this.id = obj.id || null;
-        this.name = obj.name || null;
-        this.birthday = obj.birthday ? new Date(obj.birthday) : null;
-        this.email = obj.email || null;
-        this.occupation = obj.occupation ? new Occupation(obj.occupation) : null;
+        if (obj != null) {
+            this.id = obj.id || null;
+            this.name = obj.name || null;
+            this.birthday = obj.birthday ? new Date(obj.birthday) : null;
+            this.email = obj.email || null;
+            this.occupation = obj.occupation ? new Occupation(obj.occupation) : null;
+        }
     }
 
     public get Id(): number {

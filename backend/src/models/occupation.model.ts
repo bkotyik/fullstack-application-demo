@@ -7,9 +7,11 @@ export default class Occupation {
     private description: string;
 
     constructor(obj?: any) {
-        this.id = obj.id || null;
-        this.name = obj.name || null;
-        this.description = obj.description || null;
+        if (obj != null) {
+            this.id = obj.id != null ? obj.id : 0;
+            this.name = obj.name || null;
+            this.description = obj.description || null;
+        }
     }
 
     public get Id(): number {

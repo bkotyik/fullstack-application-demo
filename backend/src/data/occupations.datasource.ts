@@ -8,7 +8,7 @@ export default class OccupationsDataSource implements IDataSource<OccupationMode
         this.data = [
             new OccupationModel({id: 0, name: "Developer", description: "Creates awesome applications"}),
             new OccupationModel({id: 1, name: "Shef", description: "Cookes as nobody else."}),
-            new OccupationModel({id: 3, name: "Teacher", description: "Knows how to teach."})
+            new OccupationModel({id: 2, name: "Teacher", description: "Knows how to teach."})
         ];
     }
 
