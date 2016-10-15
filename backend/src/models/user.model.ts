@@ -15,18 +15,20 @@ export default class User {
     private extendedJoi = Joi.extend(new MinAgeValidator());
 
     private schema: Joi.Schema = this.extendedJoi.object().keys({
-        name: this.extendedJoi.string().required(),
-        email: this.extendedJoi.string().email().required(),
+        name: this.extendedJoi.string().required().invalid(null),
+        email: this.extendedJoi.string().email()
+            .regex(/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i)
+            .required(),
         birthday: this.extendedJoi.date().minAge(18)
     });
 
     constructor(obj?: any) {
         if (obj != null) {
-            this.id = obj.id || null;
-            this.name = obj.name || null;
-            this.birthday = obj.birthday ? new Date(obj.birthday) : null;
-            this.email = obj.email || null;
-            this.occupation = obj.occupation ? new Occupation(obj.occupation) : null;
+            this.id = obj.id != null ? obj.id : undefined;
+            this.name = obj.name || undefined;
+            this.birthday = obj.birthday ? new Date(obj.birthday) : undefined;
+            this.email = obj.email || undefined;
+            this.occupation = obj.occupation ? new Occupation(obj.occupation) : undefined;
         }
     }
 
@@ -72,7 +74,7 @@ export default class User {
 
     public validate(): Promise<any> {
         let promise = new Promise<any>((resolve: Function, reject: Function) => {
-            Joi.validate(this, this.schema, {allowUnknown: true }, (err: Joi.ValidationError, value: User) => {
+            Joi.validate(this, this.schema, {allowUnknown: true}, (err: Joi.ValidationError, value: User) => {
                 if (err != null) {
                     reject(err);
                 } else {

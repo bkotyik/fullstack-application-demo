@@ -15,7 +15,7 @@ describe("User model", function () {
     });
 
     it("requires name to be set", function (done: Function) {
-        user.Name = null;
+        user.Name = undefined;
 
         user.validate().then(
             (value: ValidationResult<User>) => {
@@ -30,11 +30,26 @@ describe("User model", function () {
     });
 
     it("requires email to be set", function (done: Function) {
-        user.Email = null;
+        user.Email = undefined;
 
         user.validate().then(
             (value: ValidationResult<User>) => {
                 done(Error("Validation should fail when Email is not defined."));
+            },
+            (error: ValidationError) => {
+                expect(error.details.length).to.eq(1);
+                expect(error.details[0].path).to.eq("email");
+                done();
+            }
+        );
+    });
+
+    it("does not accept invalid e-mail addresses", function (done: Function) {
+        user.Email = "iam@invalid";
+
+        user.validate().then(
+            (value: ValidationResult<User>) => {
+                done(Error("Validation should fail when Email is invalid."));
             },
             (error: ValidationError) => {
                 expect(error.details.length).to.eq(1);
@@ -75,7 +90,7 @@ describe("User model", function () {
     });
 
     it("is not mandatory to fill the birthday attribute", function(done) {
-        user.Birthday = null;
+        user.Birthday = undefined;
 
         user.validate().then(
             (value: User) => {

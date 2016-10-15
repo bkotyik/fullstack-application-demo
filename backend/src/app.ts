@@ -17,3 +17,5 @@ app.use(ErrorHandlerMiddleware());
 app.listen(3000, function () {
     console.log("Application app listening on port 3000!");
 });
+
+export default app;
