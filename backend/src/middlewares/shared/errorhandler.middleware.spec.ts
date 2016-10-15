@@ -1,6 +1,6 @@
 /// <reference path="../../../tsd.d.ts" />
 
-import ErrorHandlerMiddleware from "./ErrorHandlerMiddleware";
+import ErrorHandlerMiddleware from "./errorhandler.middleware";
 import * as sinon from "sinon";
 import {expect} from "chai";
 import WebError from "../../models/weberror.model";
