@@ -1,6 +1,6 @@
 /// <reference path="../../../tsd.d.ts" />
 import {Request, Response} from "express";
-import WebError from "../../models/weberror.model";
+import {WebError} from "../../models";
 
 export default function GetOccupationsMiddleware(deps?: any) {
     return function (request: Request, response: Response, next: Function) {

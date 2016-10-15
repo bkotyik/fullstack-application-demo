@@ -3,7 +3,7 @@
 import ErrorHandlerMiddleware from "./errorhandler.middleware";
 import * as sinon from "sinon";
 import {expect} from "chai";
-import WebError from "../../models/weberror.model";
+import {WebError} from "../../models";
 
 describe("ErrorHandlerMiddleware", function () {
     let errorHandlerMiddleware: Function = null;

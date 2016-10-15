@@ -1,9 +1,9 @@
 /// <reference path="../../../tsd.d.ts" />
 
-import AddUserMiddleware from "./adduser.middleware";
 import * as sinon from "sinon";
 import {expect} from "chai";
-import WebError from "../../models/weberror.model";
+import AddUserMiddleware from "./adduser.middleware";
+import {WebError} from "../../models";
 
 describe("AddUserMiddleware", function () {
     let addUserMiddleware: Function = null;

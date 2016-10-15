@@ -1,7 +1,7 @@
 /// <reference path="../../tsd.d.ts" />
 import {Router} from "express";
-import GetOccupationsMiddleware from "../middlewares/occupations/getoccupations.middleware";
-import OccupationsDataSource from "../data/occupations.datasource";
+import {GetOccupationsMiddleware} from "../middlewares";
+import {OccupationsDataSource} from "../data";
 
 export default function OccupationsApi(deps?: any) {
 

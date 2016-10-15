@@ -1,7 +1,7 @@
 /// <reference path="../../../tsd.d.ts" />
 
 import OccupationsMiddleware from "./getoccupations.middleware";
-import OccupationsDataSource from "../../data/occupations.datasource";
+import {OccupationsDataSource} from "../../data";
 import * as sinon from "sinon";
 import {expect} from "chai";
 

@@ -1,6 +1,6 @@
 /// <reference path="../../tsd.d.ts" />
 import {Router} from "express";
-import AddUserMiddleware from "../middlewares/users/adduser.middleware";
+import {AddUserMiddleware} from "../middlewares";
 
 export default function UsersApi(deps?: any) {
 

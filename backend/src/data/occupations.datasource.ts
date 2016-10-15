@@ -1,18 +1,18 @@
-import OccupationModel from "../models/occupation.model";
+import {Occupation} from "../models";
 import IDataSource from "./IDataSource";
 
-export default class OccupationsDataSource implements IDataSource<OccupationModel> {
-    private data: Array<OccupationModel>;
+export default class OccupationsDataSource implements IDataSource<Occupation> {
+    private data: Array<Occupation>;
 
     constructor() {
         this.data = [
-            new OccupationModel({id: 0, name: "Developer", description: "Creates awesome applications"}),
-            new OccupationModel({id: 1, name: "Shef", description: "Cookes as nobody else."}),
-            new OccupationModel({id: 2, name: "Teacher", description: "Knows how to teach."})
+            new Occupation({id: 0, name: "Developer", description: "Creates awesome applications"}),
+            new Occupation({id: 1, name: "Shef", description: "Cookes as nobody else."}),
+            new Occupation({id: 2, name: "Teacher", description: "Knows how to teach."})
         ];
     }
 
-    getAll(): Array<OccupationModel> {
+    getAll(): Array<Occupation> {
         return this.data;
     }
 }

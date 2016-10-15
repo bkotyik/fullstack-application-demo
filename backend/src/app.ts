@@ -2,9 +2,8 @@
 
 import * as express from "express";
 import * as bodyParser from "body-parser";
-import UsersApi from "./api/users.api";
-import OccupationsApi from "./api/occupations.api";
-import ErrorHandlerMiddleware from "./middlewares/shared/errorhandler.middleware";
+import { UsersApi, OccupationsApi} from "./api";
+import {ErrorHandlerMiddleware} from "./middlewares";
 
 var app = express();
 
