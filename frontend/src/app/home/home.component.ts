@@ -1,21 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'my-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+    selector: 'my-home',
+    templateUrl: './home.component.html'
 })
 export class HomeComponent {
 
-    public oneAtATime:boolean = true;
-    public items:Array<string> = ['Item 1', 'Item 2', 'Item 3'];
+    public oneAtATime: boolean = true;
+    public items: Array<string> = ['Item 1', 'Item 2', 'Item 3'];
 
-    public status:Object = {
+    public status: Object = {
         isFirstOpen: true,
         isFirstDisabled: false
     };
 
-    public groups:Array<any> = [
+    public groups: Array<any> = [
         {
             title: 'Dynamic Group Header - 1',
             content: 'Dynamic Group Body - 1'
@@ -26,7 +25,7 @@ export class HomeComponent {
         }
     ];
 
-    public addItem():void {
+    public addItem(): void {
         this.items.push(`Items ${this.items.length + 1}`);
     }
 
