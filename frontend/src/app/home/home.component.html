@@ -1,3 +1,30 @@
-<p>
-  Home Works!
-</p>
+<form name="applicationForm">
+    <div class="form-control">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name"/>
+    </div>
+    <div class="form-control">
+        <label for="email">E-mail:</label>
+        <input type="text" class="form-control" id="email" name="email"/>
+    </div>
+    <div class="form-control">
+        <label for="birthday">Birthday:</label>
+        <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd" id="birthday" name="birthday" ngbDatepicker
+                   #d="ngbDatepicker">
+            <div class="input-group-addon" (click)="d.toggle()">
+                <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+            </div>
+        </div>
+    </div>
+    <div class="form-control">
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" class="form-control" [ngbTypeahead]="search" name="occupation"
+               editable="false"/>
+    </div>
+    <div class="form-control">
+        <Button class="btn btn-primary">
+            Submit
+        </Button>
+    </div>
+</form>
