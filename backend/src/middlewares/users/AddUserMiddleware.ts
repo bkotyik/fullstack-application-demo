@@ -1,7 +1,7 @@
-/// <reference path="../../tsd.d.ts" />
+/// <reference path="../../../tsd.d.ts" />
 import {Request, Response} from "express";
-import User from "../models/user.model";
-import WebError from "../models/weberror.model";
+import User from "../../models/user.model";
+import WebError from "../../models/weberror.model";
 
 export default function AddUserMiddleware(deps?: any) {
     return function (request: Request, response: Response, next: Function) {
