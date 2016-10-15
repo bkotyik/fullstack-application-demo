@@ -14,7 +14,7 @@ export default class User {
 
     private extendedJoi = Joi.extend(new MinAgeValidator());
 
-    private schema = this.extendedJoi.object().keys({
+    private schema: Joi.Schema = this.extendedJoi.object().keys({
         name: this.extendedJoi.string().required(),
         email: this.extendedJoi.string().email().required(),
         birthday: this.extendedJoi.date().minAge(18)
@@ -80,6 +80,10 @@ export default class User {
         });
 
         return promise;
+    }
+
+    public get Schema(): Joi.Schema {
+        return this.schema;
     }
 
 }

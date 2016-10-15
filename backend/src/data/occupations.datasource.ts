@@ -1,6 +1,7 @@
 import OccupationModel from "../models/occupation.model";
+import IDataSource from "./IDataSource";
 
-export default class OccupationsDataSource {
+export default class OccupationsDataSource implements IDataSource<OccupationModel> {
     private data: Array<OccupationModel>;
 
     constructor() {

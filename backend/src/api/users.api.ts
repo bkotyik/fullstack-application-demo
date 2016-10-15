@@ -6,7 +6,6 @@ export default function UsersApi(deps?: any) {
 
     var router = Router();
     router.post("/", AddUserMiddleware());
-    // TODO: Add endpoint declarations
 
     return router;
 }

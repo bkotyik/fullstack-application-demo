@@ -1,14 +1,16 @@
 /// <reference path="../tsd.d.ts" />
 
 import * as express from "express";
-import UsersApi from "./api/users.api";
 import * as bodyParser from "body-parser";
+import UsersApi from "./api/users.api";
+import OccupationsApi from "./api/occupations.api";
 import ErrorHandlerMiddleware from "./middlewares/ErrorHandlerMIddleware";
 
 var app = express();
 
 app.use(bodyParser.json());
 app.use("/users", UsersApi());
+app.use("/occupations", OccupationsApi());
 
 app.use(ErrorHandlerMiddleware());
 
