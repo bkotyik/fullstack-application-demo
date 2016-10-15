@@ -3,7 +3,7 @@ import app from "../app";
 import {expect} from "chai";
 
 describe("Users api", function () {
-    describe("exposes an api for posting users", function () {
+    describe("POST /users/ is an endpoint for posting users", function () {
         describe("when posting invalid user", function () {
             let invalidUser = {
                 name: "Anonymous",
@@ -68,6 +68,10 @@ describe("Users api", function () {
 
             it("should response a polite message", function() {
                 expect(response.body.message).not.to.be.undefined;
+            });
+
+            it("does not response an error code", function() {
+               expect(response.body.code).to.be.undefined;
             });
 
         });
