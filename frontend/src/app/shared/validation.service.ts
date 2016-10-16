@@ -22,7 +22,7 @@ export default class ValidationService {
     getUserValidators(): Observable<{key: string, value: Array<string>}> {
         let obs: Observable<{key: string, value: Array<string>}> = new Observable<{key: string, value: Array<string>}>(
             (subscriber: Subscriber<{key: string, value: Array<string>}>) => {
-                this.http.get(`${this.config.BACKEND_URL}/users/meta`)
+                this.http.get(`${this.config.BACKEND_URL}/users/metadata`)
                     .subscribe(
                         (response: Response) => {
                             let metadata: any = response.json();
@@ -30,11 +30,12 @@ export default class ValidationService {
                             metadata.forEach((item: any) => {
                                 rules[item.key] = this.translateValidators(item.schema)
                             });
+                            subscriber.next(rules);
                         },
                         (error: any) => {
                             subscriber.error(error);
                         }
-                );
+                    );
             }
         );
         return obs;
@@ -42,7 +43,9 @@ export default class ValidationService {
 
     private translateValidators(schema: any) {
         if (schema != null && schema._flags != null) {
-            return Object.keys(schema._flags).map( (name) =>  this.knownValidators[name](schema._flags[name]));
+            return Object.keys(schema._flags)
+                .filter((name) => this.knownValidators[name] != null)
+                .map((name) => this.knownValidators[name](schema._flags[name]));
         }
     }
 }
