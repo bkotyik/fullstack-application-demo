@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs';
+import User from "./models/user.model";
+import Occupation from "./models/occupation.model";
 
 @Injectable()
 export default class ValidationService {
@@ -14,8 +16,8 @@ export default class ValidationService {
         }
     }
 
-    getOccupations(): Observable<[{id: number, name: string, description: string}]> {
-        let obs = new Observable<[{id: number, name: string, description: string}]>(
+    getOccupations(): Observable<Array<Occupation>> {
+        let obs = new Observable<Array<Occupation>>(
             (subscriber) => {
                 this.http.get(`${this.config.BACKEND_URL}/occupations`)
                     .share()
@@ -32,8 +34,8 @@ export default class ValidationService {
         return this.http.get(`${this.config.BACKEND_URL}/users/metadata`).share();
     }
 
-    addUser(user: any):Observable<Response> {
-        return this.http.post(`${this.config.BACKEND_URL}/users`, user).share();
+    addUser(user: User):Observable<Response> {
+        return this.http.post(`${this.config.BACKEND_URL}/users`, user.toDTO()).share();
     }
 
 }

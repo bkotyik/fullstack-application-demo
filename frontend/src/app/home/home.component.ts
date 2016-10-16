@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import ValidationService from '../shared/validation.service';
 import ApiService from '../shared/api.service';
+import User from '../shared/models/user.model';
 
 @Component({
     selector: 'my-home',
@@ -43,7 +44,7 @@ export class HomeComponent implements OnInit {
     }
 
     onFormSubmit($event) {
-        this.apiService.addUser(this.form.value)
+        this.apiService.addUser(new User(this.form.value))
             .subscribe(
                 (response) => console.log(response.json()),
                 (error) => console.log(error.json())
