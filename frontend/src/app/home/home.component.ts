@@ -76,7 +76,7 @@ export class HomeComponent implements OnInit {
         text$
             .debounceTime(200)
             .distinctUntilChanged()
-            .map(term => term.length < 2 ? []
+            .map(term => term.length < 1 ? []
                 : this.occupations.filter(v => new RegExp(term, 'gi').test(v.Name)).splice(0, 10));
 
 
