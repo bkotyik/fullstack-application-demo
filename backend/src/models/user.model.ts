@@ -2,6 +2,9 @@ import Occupation from "./occupation.model";
 import * as Joi from "joi";
 import MinAgeValidator from "./validators/minage.joi.validators";
 
+const extendedJoi = Joi.extend(new MinAgeValidator());
+
+
 /**
  * Describes a User with all his/her important properties
  */
@@ -12,14 +15,12 @@ export default class User {
     private occupation: Occupation;
     private birthday: Date;
 
-    private extendedJoi = Joi.extend(new MinAgeValidator());
-
-    private schema: Joi.Schema = this.extendedJoi.object().keys({
-        name: this.extendedJoi.string().required().invalid(null),
-        email: this.extendedJoi.string().email()
+    private static schema: Joi.Schema = extendedJoi.object().keys({
+        name: extendedJoi.string().required().invalid(null),
+        email: extendedJoi.string().email()
             .regex(/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i)
             .required(),
-        birthday: this.extendedJoi.date().minAge(18)
+        birthday: extendedJoi.date().minAge(18)
     });
 
     constructor(obj?: any) {
@@ -74,7 +75,7 @@ export default class User {
 
     public validate(): Promise<any> {
         let promise = new Promise<any>((resolve: Function, reject: Function) => {
-            Joi.validate(this, this.schema, {allowUnknown: true}, (err: Joi.ValidationError, value: User) => {
+            Joi.validate(this, User.Schema, {allowUnknown: true}, (err: Joi.ValidationError, value: User) => {
                 if (err != null) {
                     reject(err);
                 } else {
@@ -86,7 +87,7 @@ export default class User {
         return promise;
     }
 
-    public get Schema(): Joi.Schema {
+    public static get Schema(): Joi.Schema {
         return this.schema;
     }
 
