@@ -1,29 +1,24 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subscriber} from 'rxjs';
-import {Http, Response} from '@angular/http';
+import {Response} from '@angular/http';
 import {Validators} from '@angular/forms';
 import {MinAgeValidator} from '../shared/validators';
+import ApiService from './api.service';
 
 @Injectable()
 export default class ValidationService {
-    config: any = null;
     knownValidators = {
         presence: () => Validators.required,
         minAge: MinAgeValidator
     };
 
-    constructor(private http: Http) {
-        try {
-            this.config = JSON.parse(sessionStorage.getItem('AppConfig'));
-        } catch (error: any) {
-
-        }
+    constructor(private apiService: ApiService) {
     }
 
     getUserValidators(): Observable<{key: string, value: Array<string>}> {
         let obs: Observable<{key: string, value: Array<string>}> = new Observable<{key: string, value: Array<string>}>(
             (subscriber: Subscriber<{key: string, value: Array<string>}>) => {
-                this.http.get(`${this.config.BACKEND_URL}/users/metadata`)
+                this.apiService.getUserMetadata()
                     .subscribe(
                         (response: Response) => {
                             let metadata: any = response.json();

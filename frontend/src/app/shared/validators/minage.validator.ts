@@ -30,8 +30,8 @@ export default function minAge(value: number) {
             }
         }
 
-        var diffInMilliseconds = Date.now() - valueInNumber.getTime();
-        var age = Math.abs(new Date(diffInMilliseconds).getUTCFullYear() - 1970);
+        let diffInMilliseconds = Date.now() - valueInNumber.getTime();
+        let age = Math.abs(new Date(diffInMilliseconds).getUTCFullYear() - 1970);
 
         if (age < value) {
             return invalid;

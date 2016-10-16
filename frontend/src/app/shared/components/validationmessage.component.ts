@@ -2,7 +2,7 @@ import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {FormControl} from '@angular/forms';
 
 @Component({
-    selector: 'validationmessage',
+    selector: 'my-validationmessage',
     template: `
         <div class="text-danger" *ngIf="messages != null && messages.length > 0">
             <span *ngFor="let message of messages">{{message}}<br/></span>

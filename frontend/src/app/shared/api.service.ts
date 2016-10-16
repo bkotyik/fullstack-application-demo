@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs';
 
 @Injectable()
@@ -9,7 +9,7 @@ export default class ValidationService {
     constructor(private http: Http) {
         try {
             this.config = JSON.parse(sessionStorage.getItem('AppConfig'));
-        } catch (error: any) {
+        } catch (error) {
 
         }
     }
@@ -26,6 +26,10 @@ export default class ValidationService {
             }
         );
         return obs;
+    }
+
+    getUserMetadata(): Observable<Response> {
+        return this.http.get(`${this.config.BACKEND_URL}/users/metadata`).share();
     }
 
 }

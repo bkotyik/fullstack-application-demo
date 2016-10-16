@@ -9,8 +9,8 @@
                 Name:
             </label>
             <input type="text" class="form-control" id="name" name="name" formControlName="name" />
-            <validationmessage [control]="form.controls['name']">
-            </validationmessage>
+            <my-validationmessage [control]="form.controls['name']">
+            </my-validationmessage>
         </div>
         <div class="form-control">
             <label for="email">
@@ -18,8 +18,8 @@
                 E-mail:
             </label>
             <input type="text" class="form-control" id="email" name="email" formControlName="email"/>
-            <validationmessage [control]="form.controls['email']">
-            </validationmessage>
+            <my-validationmessage [control]="form.controls['email']">
+            </my-validationmessage>
         </div>
         <div class="form-control">
             <label for="birthday">
@@ -33,8 +33,8 @@
                     <img src="img/calendar.svg" class="icon"/>
                 </div>
             </div>
-            <validationmessage [control]="form.controls['birthday']">
-            </validationmessage>
+            <my-validationmessage [control]="form.controls['birthday']">
+            </my-validationmessage>
         </div>
         <div class="form-control">
             <label for="occupation">
@@ -43,8 +43,8 @@
             </label>
             <input type="text" id="occupation" class="form-control" [ngbTypeahead]="search" name="occupation" formControlName="occupation"
                    editable="false"/>
-            <validationmessage [control]="form.controls['occupation']">
-            </validationmessage>
+            <my-validationmessage [control]="form.controls['occupation']">
+            </my-validationmessage>
         </div>
         <div class="row form-submit">
             <Button class="btn btn-primary" [disabled]="form.invalid">
