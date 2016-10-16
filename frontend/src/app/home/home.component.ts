@@ -61,6 +61,17 @@ export class HomeComponent implements OnInit {
             );
     }
 
+    /**
+     * Workaround for a bug in ng-bootstrap: Typeahead is not clearable.
+     * Refs: https://github.com/ng-bootstrap/ng-bootstrap/issues/829
+     * @param $event
+     */
+    clearOccupationIfEmpty($event) {
+        if ($event.target.value == "") {
+            this.form.patchValue({occupation: ''});
+        }
+    }
+
     search = (text$: Observable<string>) =>
         text$
             .debounceTime(200)
