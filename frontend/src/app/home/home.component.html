@@ -5,11 +5,17 @@
     <form name="applicationForm" [formGroup]="form" *ngIf="form != null">
         <div class="form-control">
             <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" formControlName="name"/>
+            <input type="text" class="form-control" id="name" name="name" formControlName="name" #name/>
+            <div class="text-danger">
+                {{getValidationMessages('name')}}
+            </div>
         </div>
         <div class="form-control">
             <label for="email">E-mail:</label>
             <input type="text" class="form-control" id="email" name="email" formControlName="email"/>
+            <div class="text-danger">
+                {{getValidationMessages('email')}}
+            </div>
         </div>
         <div class="form-control">
             <label for="birthday">Birthday:</label>
@@ -20,14 +26,20 @@
                     <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
                 </div>
             </div>
+            <div class="text-danger">
+                {{getValidationMessages('birthday')}}
+            </div>
         </div>
         <div class="form-control">
             <label for="occupation">Occupation:</label>
             <input type="text" id="occupation" class="form-control" [ngbTypeahead]="search" name="occupation" formControlName="occupation"
                    editable="false"/>
+            <div class="text-danger">
+                {{getValidationMessages('occupation')}}
+            </div>
         </div>
-        <div class="form-control">
-            <Button class="btn btn-primary">
+        <div class="row form-submit">
+            <Button class="btn btn-primary" [disabled]="form.invalid">
                 Submit
             </Button>
         </div>
