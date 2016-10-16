@@ -9,26 +9,34 @@ export default function minAge(value: number) {
     return function (control: AbstractControl): {
         [key: string]: any;
     } {
+
+        if (control.value == null) {
+            return null;
+        }
+
+        let invalid = {
+            minAge: {
+                valid: false,
+                value: value
+            }
+        };
+
         let valueInNumber = null;
         if (control.value != null) {
-            let invalid = {
-                minAge: {
-                    valid: false,
-                    value: value
-                }
-            };
-
             try {
-                valueInNumber = Number.parseFloat(control.value);
+                valueInNumber = new Date(`${control.value.year}-${control.value.month}-${control.value.day}`);
             } catch (error) {
                 return invalid;
             }
         }
 
-        if ( (valueInNumber != null && valueInNumber >= value) || (valueInNumber == null)) {
-            return null;
-        } else {
+        var diffInMilliseconds = Date.now() - valueInNumber.getTime();
+        var age = Math.abs(new Date(diffInMilliseconds).getUTCFullYear() - 1970);
+
+        if (age < value) {
             return invalid;
+        } else {
+            return null;
         }
     };
 }
