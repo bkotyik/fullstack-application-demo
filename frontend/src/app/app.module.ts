@@ -14,6 +14,7 @@ import {removeNgStyles, createNewHosts} from '@angularclass/hmr';
 import ValidationService from './shared/validation.service';
 import ApiService from './shared/api.service';
 import {ValidationMessageComponent} from './shared/components';
+import {MinAgeValidator} from './shared/validators';
 
 @NgModule({
     imports: [
@@ -30,7 +31,7 @@ import {ValidationMessageComponent} from './shared/components';
         ValidationMessageComponent,
         ThankYouComponent
     ],
-    providers: [ValidationService, ApiService],
+    providers: [ValidationService, ApiService, MinAgeValidator],
     bootstrap: [AppComponent]
 })
 export class AppModule {

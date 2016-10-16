@@ -1,11 +1,13 @@
 import {AbstractControl} from '@angular/forms';
+import {Injectable} from '@angular/core';
 
 /**
  * Age limit validator. User must be older than the given value
  * @param value the age limit
  * @returns {(control:AbstractControl)=>{}}
  */
-export default function minAge(value: number) {
+@Injectable()
+function minAge(value: number) {
     return function (control: AbstractControl): {
         [key: string]: any;
     } {
@@ -40,3 +42,4 @@ export default function minAge(value: number) {
         }
     };
 }
+export default minAge;
