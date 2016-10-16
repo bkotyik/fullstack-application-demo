@@ -2,19 +2,20 @@ import {Injectable} from '@angular/core';
 import {Observable, Subscriber} from 'rxjs';
 import {Http, Response} from '@angular/http';
 import {Validators} from '@angular/forms';
+import {MinAgeValidator} from '../shared/validators';
 
 @Injectable()
 export default class ValidationService {
     config: any = null;
     knownValidators = {
-        presence: () => Validators.required
+        presence: () => Validators.required,
+        minAge: MinAgeValidator
     };
 
     constructor(private http: Http) {
         try {
-            this.config = JSON.parse(sessionStorage.getItem("AppConfig"));
-        }
-        catch (error: any) {
+            this.config = JSON.parse(sessionStorage.getItem('AppConfig'));
+        } catch (error: any) {
 
         }
     }
@@ -27,9 +28,7 @@ export default class ValidationService {
                         (response: Response) => {
                             let metadata: any = response.json();
                             let rules: any = {};
-                            metadata.forEach((item: any) => {
-                                rules[item.key] = this.translateValidators(item.schema)
-                            });
+                            metadata.forEach((item: any) =>  rules[item.key] = this.translateValidators(item.schema));
                             subscriber.next(rules);
                         },
                         (error: any) => {

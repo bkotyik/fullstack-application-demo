@@ -8,9 +8,8 @@ export default class ValidationService {
 
     constructor(private http: Http) {
         try {
-            this.config = JSON.parse(sessionStorage.getItem("AppConfig"));
-        }
-        catch (error: any) {
+            this.config = JSON.parse(sessionStorage.getItem('AppConfig'));
+        } catch (error: any) {
 
         }
     }
