@@ -6,6 +6,7 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
+import {ThankYouComponent} from './thankyou/thankyou.component';
 import {routing} from './app.routing';
 
 
@@ -26,7 +27,8 @@ import {ValidationMessageComponent} from './shared/components';
     declarations: [
         AppComponent,
         HomeComponent,
-        ValidationMessageComponent
+        ValidationMessageComponent,
+        ThankYouComponent
     ],
     providers: [ValidationService, ApiService],
     bootstrap: [AppComponent]

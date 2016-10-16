@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import ValidationService from '../shared/validation.service';
 import ApiService from '../shared/api.service';
 import User from '../shared/models/user.model';
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'my-home',
@@ -16,7 +17,8 @@ export class HomeComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder,
                 private validationService: ValidationService,
-                private apiService: ApiService) {
+                private apiService: ApiService,
+                private router: Router) {
     }
 
     ngOnInit(): void {
@@ -46,7 +48,9 @@ export class HomeComponent implements OnInit {
     onFormSubmit($event) {
         this.apiService.addUser(new User(this.form.value))
             .subscribe(
-                (response) => console.log(response.json()),
+                (response) => {
+                    this.router.navigate(['thankyou']);
+                },
                 (error) => console.log(error.json())
             );
     }
