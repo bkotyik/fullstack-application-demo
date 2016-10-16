@@ -4,17 +4,10 @@ import MinAgeValidator from "./validators/minage.joi.validators";
 
 const extendedJoi = Joi.extend(new MinAgeValidator());
 
-
 /**
  * Describes a User with all his/her important properties
  */
 export default class User {
-    private id: number;
-    private name: string;
-    private email: string;
-    private occupation: Occupation;
-    private birthday: Date;
-
     private static schema: Joi.Schema = extendedJoi.object().keys({
         name: extendedJoi.string().required().invalid(null),
         email: extendedJoi.string().email()
@@ -22,6 +15,12 @@ export default class User {
             .required(),
         birthday: extendedJoi.date().minAge(18)
     });
+
+    private id: number;
+    private name: string;
+    private email: string;
+    private occupation: Occupation;
+    private birthday: Date;
 
     constructor(obj?: any) {
         if (obj != null) {
