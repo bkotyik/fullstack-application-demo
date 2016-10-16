@@ -15,6 +15,9 @@ export default class MinAgeValidator implements Extension {
             params: {
                 ageLimit: Joi.alternatives([Joi.number().positive().required()])
             },
+            setup(params: any) {
+                this._flags.minAge = params.ageLimit;
+            },
             validate(params: any, value: Date, state: any, options: any) {
                 // Calculate the year difference between now and the given date
                 var diffInMilliseconds = Date.now() - value.getTime();
