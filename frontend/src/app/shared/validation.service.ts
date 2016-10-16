@@ -3,10 +3,10 @@ import {Observable, Subscriber} from 'rxjs';
 import {Response} from '@angular/http';
 import {Validators} from '@angular/forms';
 import {MinAgeValidator} from '../shared/validators';
-import ApiService from './api.service';
+import {ApiService} from './api.service';
 
 @Injectable()
-export default class ValidationService {
+export class ValidationService {
     knownValidators = {
         presence: () => Validators.required,
         minAge: MinAgeValidator,
@@ -36,6 +36,16 @@ export default class ValidationService {
         return obs;
     }
 
+    private formatRegex(unformatted: any) {
+        let formatted = unformatted.toString();
+        if (formatted.startsWith('/')) {
+            let lastSlash = formatted.lastIndexOf('/');
+            formatted = formatted.substring(1, lastSlash);
+        }
+        console.log(formatted);
+        return formatted;
+    }
+
     private translateValidators(schema: any) {
         let validators = [];
         if (schema != null && schema._flags != null) {
@@ -47,10 +57,9 @@ export default class ValidationService {
 
         if (schema != null && schema._tests != null) {
             let tests = schema._tests
-                .filter((test: any) => this.knownValidators[test.name] != null)
+                .filter((test: any) => test.name === 'regex')
                 .map((test) => {
-                    // TODO: Ensure in a more elegant way that PatternValidator receives the regex in the expected format
-                    return this.knownValidators[test.name](test.arg.toString().substring(1, test.arg.length - 3));
+                    return this.knownValidators[test.name](this.formatRegex(test.arg));
                 });
             validators = [...validators, ...tests];
         }

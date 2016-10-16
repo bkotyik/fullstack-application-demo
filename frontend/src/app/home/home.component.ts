@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
-import ValidationService from '../shared/validation.service';
-import ApiService from '../shared/api.service';
+import {ValidationService} from '../shared/validation.service';
+import {ApiService} from '../shared/api.service';
 import User from '../shared/models/user.model';
-import {Router} from "@angular/router";
-import Occupation from "../shared/models/occupation.model";
+import {Router} from '@angular/router';
+import Occupation from '../shared/models/occupation.model';
 
 @Component({
     selector: 'my-home',
@@ -51,7 +51,6 @@ export class HomeComponent implements OnInit {
     }
 
     onFormSubmit($event) {
-        // TODO: Select Occupation from the occupations list and attach to the user
         this.apiService.addUser(new User(this.form.value))
             .subscribe(
                 (response) => {
@@ -67,7 +66,7 @@ export class HomeComponent implements OnInit {
      * @param $event
      */
     clearOccupationIfEmpty($event) {
-        if ($event.target.value == "") {
+        if ($event.target.value == '') {
             this.form.patchValue({occupation: ''});
         }
     }

@@ -5,14 +5,25 @@ import User from './models/user.model';
 import Occupation from './models/occupation.model';
 
 @Injectable()
-export default class ValidationService {
+export class ApiService {
     config: any = null;
 
     constructor(private http: Http) {
-        try {
-            this.config = JSON.parse(sessionStorage.getItem('AppConfig'));
-        } catch (error) {
+        this.parseConfig();
+    }
 
+    private parseConfig() {
+        let configString = sessionStorage.getItem('AppConfig');
+        if (configString != null) {
+            try {
+                this.config = JSON.parse(sessionStorage.getItem('AppConfig'));
+            } catch (error) {
+
+            }
+        } else {
+            this.config = {
+                BACKEND_URL: 'http://localhost:3000'
+            }
         }
     }
 
