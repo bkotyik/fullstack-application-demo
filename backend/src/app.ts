@@ -4,9 +4,14 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import { UsersApi, OccupationsApi} from "./api";
 import {ErrorHandlerMiddleware} from "./middlewares";
+import * as cors from "cors";
 
 var app = express();
 
+app.use(cors({
+    origin: ["http://localhost:8080"],
+    methods: ["GET", "POST"]
+}));
 app.use(bodyParser.json());
 app.use("/users", UsersApi());
 app.use("/occupations", OccupationsApi());
