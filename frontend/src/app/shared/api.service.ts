@@ -32,4 +32,8 @@ export default class ValidationService {
         return this.http.get(`${this.config.BACKEND_URL}/users/metadata`).share();
     }
 
+    addUser(user: any):Observable<Response> {
+        return this.http.post(`${this.config.BACKEND_URL}/users`, user).share();
+    }
+
 }

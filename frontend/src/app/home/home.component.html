@@ -1,5 +1,5 @@
 <section class="col-md-10 offset-md-1">
-    <form name="applicationForm" [formGroup]="form" *ngIf="form != null">
+    <form name="applicationForm" [formGroup]="form" *ngIf="form != null" (ngSubmit)="onFormSubmit($event)">
         <p class="lead">
             Please fill the form.
         </p>
@@ -47,7 +47,7 @@
             </my-validationmessage>
         </div>
         <div class="row form-submit">
-            <Button class="btn btn-primary" [disabled]="form.invalid">
+            <Button class="btn btn-primary" [disabled]="form.invalid" type="submit">
                 Submit
             </Button>
         </div>

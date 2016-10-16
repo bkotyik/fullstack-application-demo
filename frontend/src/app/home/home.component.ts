@@ -42,6 +42,14 @@ export class HomeComponent implements OnInit {
         }
     }
 
+    onFormSubmit($event) {
+        this.apiService.addUser(this.form.value)
+            .subscribe(
+                (response) => console.log(response.json()),
+                (error) => console.log(error.json())
+            );
+    }
+
     search = (text$: Observable<string>) =>
         text$
             .debounceTime(200)
