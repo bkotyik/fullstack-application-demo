@@ -8,13 +8,14 @@
                 <img src="img/question.svg" class="icon" placement="top" ngbTooltip="Your full name, eg. John Doe"/>
                 Name:
             </label>
-            <input type="text" class="form-control" id="name" name="name" formControlName="name" />
+            <input type="text" class="form-control" id="name" name="name" formControlName="name"/>
             <my-validationmessage [control]="form.controls['name']">
             </my-validationmessage>
         </div>
         <div class="form-control">
             <label for="email">
-                <img src="img/question.svg" class="icon" placement="top" ngbTooltip="Your e-mail address, which you check regularly"/>
+                <img src="img/question.svg" class="icon" placement="top"
+                     ngbTooltip="Your e-mail address, which you check regularly"/>
                 E-mail:
             </label>
             <input type="text" class="form-control" id="email" name="email" formControlName="email"/>
@@ -41,9 +42,10 @@
                 <img src="img/question.svg" class="icon" placement="top" ngbTooltip="Your occupation"/>
                 Occupation:
             </label>
-            <input type="text" id="occupation" class="form-control" [ngbTypeahead]="search" name="occupation" formControlName="occupation"
+            <input type="text" id="occupation" class="form-control" [ngbTypeahead]="search" name="occupation"
+                   formControlName="occupation"
                    [inputFormatter]="occupationFormatter" [resultFormatter]="occupationFormatter"
-                   [editable]="false" (blur)="clearOccupationIfEmpty($event)" />
+                   [editable]="false" (blur)="clearOccupationIfEmpty($event)"/>
             <my-validationmessage [control]="form.controls['occupation']">
             </my-validationmessage>
         </div>

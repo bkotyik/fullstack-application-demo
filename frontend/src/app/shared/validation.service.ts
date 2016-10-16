@@ -50,7 +50,7 @@ export default class ValidationService {
                 .filter((test: any) => this.knownValidators[test.name] != null)
                 .map((test) => {
                     // TODO: Ensure in a more elegant way that PatternValidator receives the regex in the expected format
-                    return this.knownValidators[test.name](test.arg.toString().substring(1,test.arg.length - 3));
+                    return this.knownValidators[test.name](test.arg.toString().substring(1, test.arg.length - 3));
                 });
             validators = [...validators, ...tests];
         }
