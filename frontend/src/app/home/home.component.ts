@@ -42,35 +42,6 @@ export class HomeComponent implements OnInit {
         }
     }
 
-    private getValidatorErrorMessage(validatorName: string, validationResult: any) {
-        let message: string = null;
-        switch (validatorName) {
-            case 'required':
-                message = `This field is required.`;
-                break;
-            case 'minAge':
-                message = `You must be at least ${validationResult.value} years old.`;
-                break;
-            default:
-                message = `This field is invalid.`;
-                break;
-        }
-        return message;
-    }
-
-
-    private getValidationMessages(name: string) {
-        let messages = [];
-        if (this.form.controls[name] != null
-            && this.form.controls[name].errors != null) {
-            let validationErrors = Object.keys(this.form.controls[name].errors);
-            for (let validatorName of validationErrors) {
-                messages.push(this.getValidatorErrorMessage(validatorName, this.form.controls[name].errors[validatorName]));
-            }
-        }
-        return messages.join('\n');
-    }
-
     search = (text$: Observable<string>) =>
         text$
             .debounceTime(200)

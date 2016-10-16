@@ -12,6 +12,7 @@ import {routing} from './app.routing';
 import {removeNgStyles, createNewHosts} from '@angularclass/hmr';
 import ValidationService from './shared/validation.service';
 import ApiService from './shared/api.service';
+import {ValidationMessageComponent} from './shared/components';
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import ApiService from './shared/api.service';
     ],
     declarations: [
         AppComponent,
-        HomeComponent
+        HomeComponent,
+        ValidationMessageComponent
     ],
     providers: [ValidationService, ApiService],
     bootstrap: [AppComponent]
