@@ -22,7 +22,7 @@ export default class ValidationService {
                 this.http.get(`${this.config.BACKEND_URL}/occupations`)
                     .share()
                     .subscribe(
-                        (response) => subscriber.next(response.json()),
+                        (response) => subscriber.next(response.json().map(occupation => new Occupation(occupation))),
                         (error) => subscriber.error({message: 'Error loading occupations'})
                     );
             }

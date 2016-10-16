@@ -5,6 +5,7 @@ import ValidationService from '../shared/validation.service';
 import ApiService from '../shared/api.service';
 import User from '../shared/models/user.model';
 import {Router} from "@angular/router";
+import Occupation from "../shared/models/occupation.model";
 
 @Component({
     selector: 'my-home',
@@ -12,7 +13,7 @@ import {Router} from "@angular/router";
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-    private occupations = [];
+    private occupations: Array<Occupation> = [];
     form: FormGroup = null;
 
     constructor(private formBuilder: FormBuilder,
@@ -45,7 +46,12 @@ export class HomeComponent implements OnInit {
         }
     }
 
+    occupationFormatter(occupation: Occupation): string {
+        return occupation.Name;
+    }
+
     onFormSubmit($event) {
+        // TODO: Select Occupation from the occupations list and attach to the user
         this.apiService.addUser(new User(this.form.value))
             .subscribe(
                 (response) => {
@@ -60,7 +66,7 @@ export class HomeComponent implements OnInit {
             .debounceTime(200)
             .distinctUntilChanged()
             .map(term => term.length < 2 ? []
-                : this.occupations.filter(v => new RegExp(term, 'gi').test(v.name)).map(v => v.name).splice(0, 10));
+                : this.occupations.filter(v => new RegExp(term, 'gi').test(v.Name)).splice(0, 10));
 
 
 }

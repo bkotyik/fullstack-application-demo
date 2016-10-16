@@ -42,6 +42,7 @@
                 Occupation:
             </label>
             <input type="text" id="occupation" class="form-control" [ngbTypeahead]="search" name="occupation" formControlName="occupation"
+                   [inputFormatter]="occupationFormatter" [resultFormatter]="occupationFormatter"
                    editable="false"/>
             <my-validationmessage [control]="form.controls['occupation']">
             </my-validationmessage>
