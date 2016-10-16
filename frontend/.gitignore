@@ -53,3 +53,7 @@ __build__/**
 # IDE #
 .idea/
 *.swp
+
+# AOT assets
+*.ngfactory.ts
+*.scss.shim.ts

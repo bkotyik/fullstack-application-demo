@@ -7,14 +7,15 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {ThankYouComponent} from './thankyou/thankyou.component';
-import {routing} from './app.routing';
+import {routes} from './app.routing';
 
 
 import {removeNgStyles, createNewHosts} from '@angularclass/hmr';
-import ValidationService from './shared/validation.service';
-import ApiService from './shared/api.service';
+import {ValidationService} from './shared/validation.service';
+import {ApiService} from './shared/api.service';
 import {ValidationMessageComponent} from './shared/components';
 import {MinAgeValidator} from './shared/validators';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
     imports: [
@@ -22,7 +23,7 @@ import {MinAgeValidator} from './shared/validators';
         BrowserModule,
         HttpModule,
         FormsModule,
-        routing,
+        RouterModule.forRoot(routes),
         NgbModule.forRoot()
     ],
     declarations: [
@@ -31,7 +32,7 @@ import {MinAgeValidator} from './shared/validators';
         ValidationMessageComponent,
         ThankYouComponent
     ],
-    providers: [ValidationService, ApiService, MinAgeValidator],
+    providers: [ValidationService, ApiService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,3 +1,3 @@
-import MinAgeValidator from './minage.validator';
+import {MinAgeValidator} from './minage.validator';
 
 export {MinAgeValidator};

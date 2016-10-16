@@ -6,8 +6,7 @@ import {Injectable} from '@angular/core';
  * @param value the age limit
  * @returns {(control:AbstractControl)=>{}}
  */
-@Injectable()
-function minAge(value: number) {
+export function MinAgeValidator(value: number) {
     return function (control: AbstractControl): {
         [key: string]: any;
     } {
@@ -42,4 +41,3 @@ function minAge(value: number) {
         }
     };
 }
-export default minAge;

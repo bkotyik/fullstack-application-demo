@@ -3,10 +3,10 @@ import {Observable, Subscriber} from 'rxjs';
 import {Response} from '@angular/http';
 import {Validators} from '@angular/forms';
 import {MinAgeValidator} from '../shared/validators';
-import ApiService from './api.service';
+import {ApiService} from './api.service';
 
 @Injectable()
-export default class ValidationService {
+export class ValidationService {
     knownValidators = {
         presence: () => Validators.required,
         minAge: MinAgeValidator,

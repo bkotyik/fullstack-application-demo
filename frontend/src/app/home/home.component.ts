@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
-import ValidationService from '../shared/validation.service';
-import ApiService from '../shared/api.service';
+import {ValidationService} from '../shared/validation.service';
+import {ApiService} from '../shared/api.service';
 import User from '../shared/models/user.model';
 import {Router} from "@angular/router";
 import Occupation from "../shared/models/occupation.model";

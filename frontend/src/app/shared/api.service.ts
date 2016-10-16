@@ -5,7 +5,7 @@ import User from './models/user.model';
 import Occupation from './models/occupation.model';
 
 @Injectable()
-export default class ApiService {
+export class ApiService {
     config: any = null;
 
     constructor(private http: Http) {

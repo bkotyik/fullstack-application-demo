@@ -9,7 +9,7 @@ import {FormControl} from '@angular/forms';
         </div>
     `
 })
-export default class ValidationMessageComponent implements OnChanges {
+export class ValidationMessageComponent implements OnChanges {
 
     @Input()
     control: FormControl;

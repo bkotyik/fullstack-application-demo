@@ -8,20 +8,28 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "sourceMap": true,
-        "noEmitHelpers": true,
+        "pretty": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "noImplicitAny": false,
+        "noImplicitReturns": true,
+        "noImplicitUseStrict": false,
+        "noFallthroughCasesInSwitch": true,
         "outDir": "./dist",
-        "rootDir": "./src"
+        "rootDir": "./src",
+        "types": [
+            "node"
+        ]
     },
     "angularCompilerOptions": {
         "debug": true
     },
+    "compileOnSave": false,
     "files": [
         "src/main.ts"
     ],
-    "compileOnSave": false,
-    "buildOnSave": false,
-    "awesomeTypescriptLoaderOptions": {
-        "forkChecker": true,
-        "useWebpackText": true
-    }
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
 }
