@@ -20,7 +20,7 @@ Application Portal  - *Full stack javascript application using Angular 2 and Nod
  3. Install yarn
 `npm install -g yarn`
  4. Enter to the cloned directory and install the dependencies
- `yarn install` (or alternatively you can use npm as well)
+ `yarn install` (or alternatively you can use npm as well, but I provided lock files only for yarn)
  5. Build the applicatioin
 	`npm run build`
  6. Start it!
@@ -56,6 +56,7 @@ The application exposes three endpoints:
  - Bundled using [Webpack 2](https://github.com/webpack/webpack)
  - Unit tested using [Jasmine](http://http://jasmine.github.io) and E2E tested using [Protractor](http://www.protractortest.org/)
  - Uses validation metadata exposed by backend
+ - Production build using Angular 2 [AOT](https://angular.io/docs/ts/latest/cookbook/aot-compiler.html)
   
  **Installation**
  
@@ -64,11 +65,10 @@ The application exposes three endpoints:
  3. Install yarn
 `npm install -g yarn`
  4. Enter to the cloned directory and install the dependencies
- `yarn install` (or alternatively you can use npm as well)
- 5. Build the applicatioin
-	`npm run build`
- 6. Start it!
-`npm run start`
+ `yarn install` (or alternatively you can use npm as well, but I provided lock files only for yarn)
+ 5. Build the application and create a docker container from the output
+	`npm run build` creates a build into the 'dist' directory and `npm run docker-build` makes a container from that. 
+ 6. Or start it in development mode by running `npm run start`
 
 **Using Docker for deployment**
 First create a build, then just hit `npm run docker-build` to create the docker image. 
@@ -78,5 +78,5 @@ So the frontend will be available at `http://localhost:8080`
 
 **Running the tests**
 Tests can be run by executing `npm run test`. The command **will run only unit** tests.
-In order to be able to run E2E, start an instance from both the frontend and the backend, and execute
-`npm run e2e` from command line.
+In order to be able to run E2E, first update your chrome webdriver by executing the following line in a command prompt: `npm run webdriver-update`
+After that start an instance from both the frontend and the backend, and execute `npm run e2e` from the command line.
