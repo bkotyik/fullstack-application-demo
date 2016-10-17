@@ -178,42 +178,42 @@ module.exports = function makeWebpackConfig() {
             // The (\\|\/) piece accounts for path separators in *nix and Windows
             /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
             root('./src') // location of your src
-        ),
-
-        // Tslint configuration for webpack 2
-        new webpack.LoaderOptionsPlugin({
-            options: {
-                /**
-                 * Apply the tslint loader as pre/postLoader
-                 * Reference: https://github.com/wbuchwalter/tslint-loader
-                 */
-                tslint: {
-                    emitErrors: false,
-                    failOnHint: false
-                },
-                /**
-                 * Sass
-                 * Reference: https://github.com/jtangelder/sass-loader
-                 * Transforms .scss files to .css
-                 */
-                sassLoader: {
-                    //includePaths: [path.resolve(__dirname, "node_modules/foundation-sites/scss")]
-                },
-                /**
-                 * PostCSS
-                 * Reference: https://github.com/postcss/autoprefixer-core
-                 * Add vendor prefixes to your css
-                 */
-                postcss: [
-                    autoprefixer({
-                        browsers: ['last 2 version']
-                    })
-                ]
-            }
-        })
+        )
     ];
 
     if (!isTest && !isProd) {
+        config.plugins.push(
+            // Tslint configuration for webpack 2
+            new webpack.LoaderOptionsPlugin({
+                options: {
+                    /**
+                     * Apply the tslint loader as pre/postLoader
+                     * Reference: https://github.com/wbuchwalter/tslint-loader
+                     */
+                    tslint: {
+                        emitErrors: false,
+                        failOnHint: false
+                    },
+                    /**
+                     * Sass
+                     * Reference: https://github.com/jtangelder/sass-loader
+                     * Transforms .scss files to .css
+                     */
+                    sassLoader: {
+                        //includePaths: [path.resolve(__dirname, "node_modules/foundation-sites/scss")]
+                    },
+                    /**
+                     * PostCSS
+                     * Reference: https://github.com/postcss/autoprefixer-core
+                     * Add vendor prefixes to your css
+                     */
+                    postcss: [
+                        autoprefixer({
+                            browsers: ['last 2 version']
+                        })
+                    ]
+                }
+            }));
         config.plugins.push(new DashboardPlugin());
     }
 
