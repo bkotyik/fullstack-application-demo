@@ -11,14 +11,14 @@ describe("GetOccupationsMiddleware", function () {
     let mockResponse: any = null;
     let next: Sinon.SinonSpy = null;
 
-    before(function() {
+    before(function () {
         mockRequest = {};
         mockResponse = {};
         next = sinon.spy();
     });
 
-    after(function() {
-       next.reset();
+    after(function () {
+        next.reset();
     });
 
     describe("when datasource is injected", function () {
@@ -42,7 +42,7 @@ describe("GetOccupationsMiddleware", function () {
             occupationsMiddleware(mockRequest, mockResponse, next);
         });
 
-        after(function() {
+        after(function () {
             jsonSpy.reset();
             statusStub.reset();
         });
@@ -51,34 +51,34 @@ describe("GetOccupationsMiddleware", function () {
             expect(next.notCalled).be.true;
         });
 
-        it("gets all the occupations from the data source", function() {
+        it("gets all the occupations from the data source", function () {
             expect((<Sinon.SinonSpy>occupationsDataSourceStub.getAll).called).be.true;
         });
 
-        it("responses in json format", function() {
-           expect(jsonSpy.called).be.true;
+        it("responses in json format", function () {
+            expect(jsonSpy.called).be.true;
         });
 
-        it("responses HTTP OK", function() {
-           expect(statusStub.withArgs(200).called).be.true;
+        it("responses HTTP OK", function () {
+            expect(statusStub.withArgs(200).called).be.true;
         });
     });
 
-    describe("when no datasource injected", function() {
-        before(function() {
+    describe("when no datasource injected", function () {
+        before(function () {
             occupationsMiddleware = OccupationsMiddleware();
             occupationsMiddleware(mockRequest, mockResponse, next);
         });
 
-        after(function() {
+        after(function () {
             next.reset();
         });
 
-        it("invokes next", function() {
+        it("invokes next", function () {
             expect(next.calledOnce).to.be.true;
         });
 
-        it("passes an error to next function", function() {
+        it("passes an error to next function", function () {
             expect(next.args[0].length).eq(1);
         });
 

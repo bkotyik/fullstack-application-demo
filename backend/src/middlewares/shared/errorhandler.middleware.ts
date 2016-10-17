@@ -1,8 +1,8 @@
 import {Request, Response} from "express";
 import {WebError} from "../../models";
 
-export default function(deps?: any) {
-    return function ErrorHandlerMiddleware( error: WebError, req: Request, res: Response, next: Function) {
+export default function (deps?: any) {
+    return function ErrorHandlerMiddleware(error: WebError, req: Request, res: Response, next: Function) {
         let errorResponse = {
             message: "Internal server error",
             status: 500,

@@ -2,7 +2,7 @@
 
 import * as express from "express";
 import * as bodyParser from "body-parser";
-import { UsersApi, OccupationsApi} from "./api";
+import {UsersApi, OccupationsApi} from "./api";
 import {ErrorHandlerMiddleware} from "./middlewares";
 import * as cors from "cors";
 

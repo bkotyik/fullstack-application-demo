@@ -3,7 +3,6 @@
 import * as sinon from "sinon";
 import {expect} from "chai";
 import GetUserMetadataMiddleware from "./getusermetadata.middleware";
-import {WebError} from "../../models";
 
 describe("GetUserMetadataMiddleware", function () {
     let getUserMetadataMiddleware: Function = null;
@@ -59,6 +58,4 @@ describe("GetUserMetadataMiddleware", function () {
             expect(sendStub.calledOnce).eq(true);
         });
     });
-
-
 });

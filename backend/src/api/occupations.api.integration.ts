@@ -19,12 +19,12 @@ describe("Occupations api", function () {
                 });
         });
 
-        it("should respond HTTP 200", function() {
-           expect(response.status).to.eq(200);
+        it("should respond HTTP 200", function () {
+            expect(response.status).to.eq(200);
         });
 
-        it("should respond an array of occupations", function() {
-           expect(Array.isArray(response.body)).to.be.true;
+        it("should respond an array of occupations", function () {
+            expect(Array.isArray(response.body)).to.be.true;
         });
     });
 });
