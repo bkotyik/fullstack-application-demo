@@ -2,6 +2,7 @@
     "name": "application-frontend",
     "version": "1.0.0",
     "description": "Frontend for application-backend. Built with Angular 2.",
+    "author": "balint.marci@gmail.com",
     "license": "MIT",
     "scripts": {
         "clean": "rimraf node_modules doc dist && npm cache clean",
