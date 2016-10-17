@@ -42,7 +42,6 @@ export class ValidationService {
             let lastSlash = formatted.lastIndexOf('/');
             formatted = formatted.substring(1, lastSlash);
         }
-        console.log(formatted);
         return formatted;
     }
 
@@ -59,6 +58,7 @@ export class ValidationService {
             let tests = schema._tests
                 .filter((test: any) => test.name === 'regex')
                 .map((test) => {
+                    console.log(test);
                     return this.knownValidators[test.name](this.formatRegex(test.arg));
                 });
             validators = [...validators, ...tests];
