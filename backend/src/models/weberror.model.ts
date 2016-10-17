@@ -4,7 +4,7 @@
  * Wraps a Node error into a custom error object
  */
 export default class WebError {
-    // Status to be responded at the end of the pipeline
+    // Status to be sent at the end of the pipeline
     private status: number;
     // Error code which describes the type of the error that occured
     private errorCode: string;

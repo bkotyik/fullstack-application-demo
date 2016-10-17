@@ -55,11 +55,11 @@ describe("GetOccupationsMiddleware", function () {
             expect((<Sinon.SinonSpy>occupationsDataSourceStub.getAll).called).be.true;
         });
 
-        it("responses in json format", function () {
+        it("answers in json format", function () {
             expect(jsonSpy.called).be.true;
         });
 
-        it("responses HTTP OK", function () {
+        it("answers HTTP OK", function () {
             expect(statusStub.withArgs(200).called).be.true;
         });
     });

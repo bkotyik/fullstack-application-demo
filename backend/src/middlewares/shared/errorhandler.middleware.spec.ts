@@ -41,11 +41,11 @@ describe("ErrorHandlerMiddleware", function () {
         expect(statusStub.withArgs(fakeStatus).calledOnce).to.be.true;
     });
 
-    it("responses a json formatted error message", function () {
+    it("answers a json formatted error message", function () {
         expect(jsonSpy.calledOnce).to.be.true;
     });
 
-    it("response an error object which contains the error code", function () {
+    it("answers an error object which contains the error code", function () {
         let errorResponse: any = jsonSpy.args[0][0];
         expect(errorResponse.code).to.eq(fakeErrorCode);
     });
