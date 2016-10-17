@@ -4,12 +4,14 @@ import {FormControl} from '@angular/forms';
 @Component({
     selector: 'my-validationmessage',
     template: `
-        <div class="text-danger" *ngIf="messages != null && messages.length > 0">
-            <span *ngFor="let message of messages">{{message}}<br/></span>
+        <div>
+            <ul>
+                <li *ngFor="let message of messages" class="text-danger">{{message}}</li>
+            </ul>
         </div>
     `
 })
-export default class ValidationMessageComponent implements OnChanges {
+export class ValidationMessageComponent implements OnChanges {
 
     @Input()
     control: FormControl;
@@ -20,10 +22,10 @@ export default class ValidationMessageComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        this.updateValidationMessage();
         if (this.control != null) {
             this.control.valueChanges.subscribe(this.updateValidationMessage.bind(this));
         }
+        this.updateValidationMessage();
     }
 
 
