@@ -6,6 +6,7 @@ import {Response} from '@angular/http';
 import {Validators} from '@angular/forms';
 import {MinAgeValidator} from './validators/index';
 
+/* tslint:disable:quotemark */
 let fakeSchema = [{
     "key": "name",
     "schema": {
@@ -30,6 +31,7 @@ let fakeSchema = [{
         "_flags": {"minAge": 18},
     }
 }];
+/* tslint:enable:quotemark */
 
 let apiServiceStub = {
     getUserMetadata: function () {
@@ -71,7 +73,7 @@ describe("Service: ValidationService", function () {
                         expect(validators.name[0]).toBe(Validators.required);
 
                         expect(validators.birthday.length).toEqual(1);
-                        
+
                         expect(validators.email.length).toEqual(2);
                         expect(validators.email[0]).toBe(Validators.required);
 
