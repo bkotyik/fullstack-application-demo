@@ -1,11 +1,11 @@
 Application Portal  - *Full stack javascript application using Angular 2 and NodeJS*
 =======
 ## Common prerequisities ##
-I would rather you installed the following packages globally on your local computer due to the build process heavily relays on them:
-- Rimraf: `npm install -g rimraf`
-- Typescript 2: `npm install -g ts`
-- Mocha: `npm install -g mocha`
-- Istanbul: `npm install -g istanbul`
+I would rather you installed the following packages globally on your local computer due to the build processes are heavily relaying on them:
+ - Rimraf: `npm install -g rimraf`
+ - Typescript 2: `npm install -g ts`
+ - Mocha: `npm install -g mocha`
+ - Istanbul: `npm install -g istanbul`
 
 ----------
 
