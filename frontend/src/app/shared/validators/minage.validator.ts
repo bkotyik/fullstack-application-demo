@@ -9,9 +9,8 @@ export function MinAgeValidator(value: number) {
     return function (control: AbstractControl): {
         [key: string]: any;
     } {
-        console.log(`By default "${control.value}"`);
         // If field has no value, just return and say its okay
-        if (control.value == null || control.value == "") {
+        if (control.value === null || control.value === '' || control.value === undefined) {
             return null;
         }
         // define a basic error message for invalid input
