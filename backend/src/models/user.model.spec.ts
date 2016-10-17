@@ -89,7 +89,7 @@ describe("User model", function () {
         );
     });
 
-    it("is not mandatory to fill the birthday attribute", function(done) {
+    it("is not mandatory to fill the birthday attribute", function (done) {
         user.Birthday = undefined;
 
         user.validate().then(

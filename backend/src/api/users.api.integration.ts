@@ -12,12 +12,12 @@ describe("Users api", function () {
 
             let response: any = null;
 
-            before(function(done) {
+            before(function (done) {
                 request(app)
                     .post("/users")
                     .send(invalidUser)
                     .set("Accept", "application/json")
-                    .end(function(err: any, res: any) {
+                    .end(function (err: any, res: any) {
                         if (err != null) {
                             throw err;
                         }
@@ -30,8 +30,8 @@ describe("Users api", function () {
                 expect(response.status).to.eq(400);
             });
 
-            it("should validation error", function() {
-               expect(response.body.code).to.eq("VALIDATION_ERROR");
+            it("should validation error", function () {
+                expect(response.body.code).to.eq("VALIDATION_ERROR");
             });
 
             it("should expose validation details", function () {
@@ -40,7 +40,7 @@ describe("Users api", function () {
 
         });
 
-        describe("when a valid user is posted", function() {
+        describe("when a valid user is posted", function () {
             let validUser = {
                 name: "Anonymous",
                 email: "fake@valid.com"
@@ -48,12 +48,12 @@ describe("Users api", function () {
 
             let response: any = null;
 
-            before(function(done) {
+            before(function (done) {
                 request(app)
                     .post("/users")
                     .send(validUser)
                     .set("Accept", "application/json")
-                    .end(function(err: any, res: any) {
+                    .end(function (err: any, res: any) {
                         if (err != null) {
                             throw err;
                         }
@@ -66,12 +66,12 @@ describe("Users api", function () {
                 expect(response.status).to.eq(200);
             });
 
-            it("should response a polite message", function() {
+            it("should response a polite message", function () {
                 expect(response.body.message).not.to.be.undefined;
             });
 
-            it("does not response an error code", function() {
-               expect(response.body.code).to.be.undefined;
+            it("does not response an error code", function () {
+                expect(response.body.code).to.be.undefined;
             });
 
         });

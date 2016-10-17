@@ -18,8 +18,8 @@ describe("AddUserMiddleware", function () {
         next = sinon.spy();
     });
 
-    after(function() {
-       next.reset();
+    after(function () {
+        next.reset();
     });
 
     describe("when a valid User model is posted in the request", function () {
@@ -38,15 +38,15 @@ describe("AddUserMiddleware", function () {
             addUserMiddleware(mockRequest, mockResponse, next);
         });
 
-        after(function() {
-           jsonSpy.reset();
+        after(function () {
+            jsonSpy.reset();
         });
 
-        it("returns a polite message that informs the the application was successful", function() {
+        it("returns a polite message that informs the the application was successful", function () {
             expect(jsonSpy.withArgs({message: "Thank you for your application. We will contact you soon."}).calledOnce).be.true;
         });
 
-        it("ends communication, does not invoke next middleware", function() {
+        it("ends communication, does not invoke next middleware", function () {
             expect(next.notCalled).be.true;
         });
 
@@ -63,20 +63,20 @@ describe("AddUserMiddleware", function () {
             addUserMiddleware(mockRequest, mockResponse, next);
         });
 
-        after(function() {
+        after(function () {
             next.reset();
         });
 
-        it("invokes the next middleware", function() {
-           expect(next.calledOnce).to.be.true;
+        it("invokes the next middleware", function () {
+            expect(next.calledOnce).to.be.true;
         });
 
-        it("creates an error object which will be passed to the error handler", function() {
-           expect(next.args.length).to.eq(1);
+        it("creates an error object which will be passed to the error handler", function () {
+            expect(next.args.length).to.eq(1);
         });
 
-        it("raises a validation error", function() {
-           expect((<WebError>next.args[0][0]).Status).eq(400);
+        it("raises a validation error", function () {
+            expect((<WebError>next.args[0][0]).Status).eq(400);
         });
 
     });

@@ -33,19 +33,19 @@ describe("ErrorHandlerMiddleware", function () {
         errorHandlerMiddleware(new WebError(null, fakeStatus, fakeErrorCode), mockRequest, mockResponse, next);
     });
 
-    after(function() {
-       next.reset();
+    after(function () {
+        next.reset();
     });
 
-    it("sets response status according to the status defined in WebError", function() {
+    it("sets response status according to the status defined in WebError", function () {
         expect(statusStub.withArgs(fakeStatus).calledOnce).to.be.true;
     });
 
-    it("responses a json formatted error message", function() {
+    it("answers a json formatted error message", function () {
         expect(jsonSpy.calledOnce).to.be.true;
     });
 
-    it("response an error object which contains the error code", function() {
+    it("answers an error object which contains the error code", function () {
         let errorResponse: any = jsonSpy.args[0][0];
         expect(errorResponse.code).to.eq(fakeErrorCode);
     });

@@ -5,16 +5,17 @@
         </p>
         <div class="form-control">
             <label for="name">
-                <img src="img/question.svg" class="icon" placement="top" ngbTooltip="Your full name, eg. John Doe"/>
+                <img src="img/question.svg" class="icon" placement="top" ngbTooltip="Please provide your full name as it appears in your passport."/>
                 Name:
             </label>
-            <input type="text" class="form-control" id="name" name="name" formControlName="name" />
+            <input type="text" class="form-control" id="name" name="name" formControlName="name"/>
             <my-validationmessage [control]="form.controls['name']">
             </my-validationmessage>
         </div>
         <div class="form-control">
             <label for="email">
-                <img src="img/question.svg" class="icon" placement="top" ngbTooltip="Your e-mail address, which you check regularly"/>
+                <img src="img/question.svg" class="icon" placement="top"
+                     ngbTooltip="Please enter an email address where we can contact you."/>
                 E-mail:
             </label>
             <input type="text" class="form-control" id="email" name="email" formControlName="email"/>
@@ -23,7 +24,7 @@
         </div>
         <div class="form-control">
             <label for="birthday">
-                <img src="img/question.svg" class="icon" placement="top" ngbTooltip="Your birthday"/>
+                <img src="img/question.svg" class="icon" placement="top" ngbTooltip="Note that, you must be older than 18 years old."/>
                 Birthday:
             </label>
             <div class="input-group">
@@ -38,12 +39,13 @@
         </div>
         <div class="form-control">
             <label for="occupation">
-                <img src="img/question.svg" class="icon" placement="top" ngbTooltip="Your occupation"/>
+                <img src="img/question.svg" class="icon" placement="top" ngbTooltip="Please enter your target job."/>
                 Occupation:
             </label>
-            <input type="text" id="occupation" class="form-control" [ngbTypeahead]="search" name="occupation" formControlName="occupation"
+            <input type="text" id="occupation" class="form-control" [ngbTypeahead]="search" name="occupation"
+                   formControlName="occupation"
                    [inputFormatter]="occupationFormatter" [resultFormatter]="occupationFormatter"
-                   [editable]="false" (blur)="clearOccupationIfEmpty($event)" />
+                   [editable]="false" (blur)="clearOccupationIfEmpty($event)"/>
             <my-validationmessage [control]="form.controls['occupation']">
             </my-validationmessage>
         </div>
@@ -54,7 +56,7 @@
         </div>
     </form>
 
-    <ngb-alert [dismissible]="false" *ngIf="form == null" type="danger">
+    <ngb-alert [dismissible]="false" *ngIf="form === null" type="danger">
         <strong>Error!</strong> Our server seems to be offline. Please check back later.
     </ngb-alert>
 

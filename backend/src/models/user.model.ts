@@ -72,6 +72,10 @@ export default class User {
         this.birthday = value;
     }
 
+    /**
+     * Validates user model. Wrapped JOI validation into a promise.
+     * @returns {Promise<any>|Promise} Resolves if validation was successful, rejects on error.
+     */
     public validate(): Promise<any> {
         let promise = new Promise<any>((resolve: Function, reject: Function) => {
             Joi.validate(this, User.Schema, {allowUnknown: true}, (err: Joi.ValidationError, value: User) => {
@@ -86,6 +90,11 @@ export default class User {
         return promise;
     }
 
+    /**
+     * Returns User schema
+     * @returns {Joi.Schema}
+     * @constructor
+     */
     public static get Schema(): Joi.Schema {
         return this.schema;
     }
