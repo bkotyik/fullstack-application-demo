@@ -1,5 +1,13 @@
 Application Portal  - *Full stack javascript application using Angular 2 and NodeJS*
 =======
+## Common prerequisities ##
+I would rather you installed the following packages globally on your local computer due to the build process heavily relays on them:
+- Rimraf: `npm install -g rimraf`
+- Typescript 2: `npm install -g ts`
+- Mocha: `npm install -g mocha`
+- Istanbul: `npm install -g istanbul`
+
+----------
 
 ## Backend##
 **Features**
@@ -17,20 +25,20 @@ Application Portal  - *Full stack javascript application using Angular 2 and Nod
 
  1. Clone this repository
  2. Enter into the 'backend' directory
- 3. Install yarn
+ 3. Install yarn package manager globally
 `npm install -g yarn`
- 4. Enter to the cloned directory and install the dependencies
+ 4. Make sure you are in the 'backend' directory where the package.json locates. Install all the backend dependencies:
  `yarn install` (or alternatively you can use npm as well, but I provided lock files only for yarn)
- 5. Build the applicatioin
+ 5. Build the application
 	`npm run build`
  6. Start it!
 `npm run start`
 
 **Using Docker for deployment**
-First create a build, then just hit `npm run docker-build` to create the docker image. 
+First create a build (by running `npm run build`), then just hit `npm run docker-build` to create the docker image. 
 When it's done you can easily start the container with the following command: `docker run -p 3000:3000 bkotyik/fullstack-backend`
-Not that in this case the port 3000 of the container will be forwarded to your machine. 
-So the backend will be available at `http://localhost:3000`
+Note that in this case the port number 3000 of the container will be forwarded to your machine. 
+So the service will be available at `http://localhost:3000`
 
 **Running the tests**
 Tests can be run by executing `npm run test`. The command will run both unit and integration tests.
@@ -62,9 +70,9 @@ The application exposes three endpoints:
  
  1. Clone this repository
  2. Enter into the 'frontend' directory
- 3. Install yarn
+ 3. Install yarn package manager globally
 `npm install -g yarn`
- 4. Enter to the cloned directory and install the dependencies
+ 4. Make sure you are in the 'frontend' directory where the package.json locates. Install all the backend dependencies:
  `yarn install` (or alternatively you can use npm as well, but I provided lock files only for yarn)
  5. Build the application and create a docker container from the output
 	`npm run build` creates a build into the 'dist' directory and `npm run docker-build` makes a container from that. 
