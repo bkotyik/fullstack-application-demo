@@ -21,16 +21,21 @@ export function MinAgeValidator(value: number) {
             }
         };
 
-        let valueInNumber = null;
+        let valueInDate = null;
         // Parse input
         try {
-            valueInNumber = new Date(`${control.value.year}-${control.value.month}-${control.value.day}`);
+            valueInDate = new Date(`${control.value.year}-${control.value.month}-${control.value.day}`);
         } catch (error) {
             return invalid;
         }
 
+        // Check if the date is valid
+        if (isNaN(valueInDate.getTime())) {
+            return invalid;
+        }
+
         // Calculate difference
-        let diffInMilliseconds = Date.now() - valueInNumber.getTime();
+        let diffInMilliseconds = Date.now() - valueInDate.getTime();
         let age = Math.abs(new Date(diffInMilliseconds).getUTCFullYear() - 1970);
         // Evaluate result
         if (age < value) {
