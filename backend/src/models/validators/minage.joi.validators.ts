@@ -1,6 +1,10 @@
 import * as Joi from "joi";
 import {Extension} from "joi";
 
+/**
+ * Extension module for Joi.
+ * Adds minAge validator for date type.
+ */
 export default class MinAgeValidator implements Extension {
     base = Joi.date();
     name = "date";
@@ -24,8 +28,8 @@ export default class MinAgeValidator implements Extension {
                 var age = Math.abs(new Date(diffInMilliseconds).getUTCFullYear() - 1970);
 
                 if (age < params.ageLimit) {
-                    // Under aged, validation fails
-                    return this.createError("date.minAge", { v: value, ageLimit: params.ageLimit }, state, options);
+                    // Underaged, validation fails
+                    return this.createError("date.minAge", {v: value, ageLimit: params.ageLimit}, state, options);
                 }
 
                 return value;
