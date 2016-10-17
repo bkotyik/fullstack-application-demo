@@ -1,3 +1,3 @@
-import ValidationMessageComponent from './validationmessage.component';
+import {ValidationMessageComponent} from './validationmessage.component';
 
 export {ValidationMessageComponent};

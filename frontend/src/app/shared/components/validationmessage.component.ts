@@ -9,7 +9,8 @@ import {FormControl} from '@angular/forms';
                 <li *ngFor="let message of messages" class="text-danger">{{message}}</li>
             </ul>
         </div>
-    `
+    `,
+    styleUrls: ['./validationmessage.component.scss']
 })
 export class ValidationMessageComponent implements OnChanges {
 
