@@ -9,12 +9,10 @@ import {HomeComponent} from './home/home.component';
 import {ThankYouComponent} from './thankyou/thankyou.component';
 import {routes} from './app.routing';
 
-
 import {removeNgStyles, createNewHosts} from '@angularclass/hmr';
 import {ValidationService} from './shared/validation.service';
 import {ApiService} from './shared/api.service';
 import {ValidationMessageComponent} from './shared/components';
-import {MinAgeValidator} from './shared/validators';
 import {RouterModule} from '@angular/router';
 
 @NgModule({

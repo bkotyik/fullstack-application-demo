@@ -1,5 +1,4 @@
 import {AbstractControl} from '@angular/forms';
-import {Injectable} from '@angular/core';
 
 /**
  * Age limit validator. User must be older than the given value
