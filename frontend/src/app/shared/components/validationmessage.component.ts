@@ -53,7 +53,7 @@ export class ValidationMessageComponent implements OnChanges {
                 message = `You must be at least ${validationResult.value} years old.`;
                 break;
             case 'pattern':
-                message = `Invalid format.`;
+                message = `This field has invalid format or fake value.`;
                 break;
             default:
                 message = `This field is invalid.`;
