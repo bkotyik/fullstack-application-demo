@@ -34,6 +34,10 @@ I would rather you installed the following packages globally on your local compu
  6. Start it!
 `npm run start`
 
+**Configuration**
+The backend comes with a default built-in configuration which can be easily overridden by copying 'src/config.json.dist' into the dist/ folder. Dont forget to rename it to 'config.json'; After that when the backend starts up it will use the configuration from config.json.
+By default the backend uses tcp:3000 port and allows cross domain request only from localhost:8080.
+
 **Using Docker for deployment**
 First create a build (by running `npm run build`), then just hit `npm run docker-build` to create the docker image. 
 When it's done you can easily start the container with the following command: `docker run -p 3000:3000 bkotyik/fullstack-backend`
@@ -77,6 +81,11 @@ The application exposes three endpoints:
  5. Build the application and create a docker container from the output
 	`npm run build` creates a build into the 'dist' directory and `npm run docker-build` makes a container from that. 
  6. Or start it in development mode by running `npm run start`
+
+ **Configuration**
+  The frontend comes with a default built-in configuration which can be easily overridden by editing the config.js file under the dist/ folder. 
+  By default the frontend will be served via the tcp:8080 port and expects the backend to be available at the http://localhost:3000 address.
+
 
 **Using Docker for deployment**
 First create a build, then just hit `npm run docker-build` to create the docker image. 
