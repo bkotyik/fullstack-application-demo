@@ -152,7 +152,7 @@ module.exports = function makeWebpackConfig() {
     if (!isTest || !isTestWatch) {
         // tslint support
         config.module.rules.push({
-            test: /\.ts$/,
+            test: /!(ngFactory)\.ts$/,
             enforce: 'pre',
             loader: 'tslint'
         });

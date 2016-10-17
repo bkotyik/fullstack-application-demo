@@ -1,7 +1,7 @@
 Application Portal  - *Full stack javascript application using Angular 2 and NodeJS*
 =======
 ## Common prerequisities ##
-I would rather you installed the following packages globally on your local computer due to the build processes are heavily relaying on them:
+If you are using Windows, I would rather you installed the following packages globally on your local computer due to the build processes are heavily relaying on them:
  - Rimraf: `npm install -g rimraf`
  - Typescript 2: `npm install -g ts`
  - Mocha: `npm install -g mocha`
@@ -24,7 +24,7 @@ I would rather you installed the following packages globally on your local compu
 **Installation**
 
  1. Clone this repository
- 2. Enter into the 'backend' directory
+ 2. Step into the 'backend' directory
  3. Install yarn package manager globally
 `npm install -g yarn`
  4. Make sure you are in the 'backend' directory where the package.json locates. Install all the backend dependencies:
@@ -73,12 +73,12 @@ The application exposes three endpoints:
  **Installation**
  
  1. Clone this repository
- 2. Enter into the 'frontend' directory
+ 2. Step into the 'frontend' directory
  3. Install yarn package manager globally
 `npm install -g yarn`
  4. Make sure you are in the 'frontend' directory where the package.json locates. Install all the backend dependencies:
  `yarn install` (or alternatively you can use npm as well, but I provided lock files only for yarn)
- 5. Build the application and create a docker container from the output
+ 5. Build the frontend by setting NODE_ENV=build and then create a docker container from the output
 	`npm run build` creates a build into the 'dist' directory and `npm run docker-build` makes a container from that. 
  6. Or start it in development mode by running `npm run start`
 
