@@ -55,7 +55,7 @@ function readConfig() {
                 console.log(`${configFile} contains invalid configuration data. Using default configuration`);
             }
         } catch (error) {
-            console.log(`Config found at ${__dirname}/config.json but ${error}`)
+            console.log(`Config found at ${__dirname}/config.json but ${error}`);
         }
     }
 }

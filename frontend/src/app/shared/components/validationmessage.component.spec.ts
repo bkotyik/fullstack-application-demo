@@ -19,7 +19,7 @@ describe('Component: ValidationMessageComponent', () => {
         validationMessageComponent = fixture.componentInstance;
     });
 
-    it("does not display messages when no validations are attached to the control", function() {
+    it('does not display messages when no validations are attached to the control', function() {
         let formControl = new FormControl('', []);
         validationMessageComponent.control = formControl;
         fixture.detectChanges();
@@ -28,7 +28,7 @@ describe('Component: ValidationMessageComponent', () => {
     });
 
     it('displays a message when form control is required but empty', function () {
-        let formControl = new FormControl('', [Validators.required])
+        let formControl = new FormControl('', [Validators.required]);
         validationMessageComponent.control = formControl;
         validationMessageComponent.updateValidationMessage();
         fixture.detectChanges();
@@ -36,7 +36,7 @@ describe('Component: ValidationMessageComponent', () => {
     });
 
     it('does not display message when form control is required and not empty', function () {
-        let formControl = new FormControl('Test', [Validators.required])
+        let formControl = new FormControl('Test', [Validators.required]);
         validationMessageComponent.control = formControl;
         validationMessageComponent.updateValidationMessage();
         fixture.detectChanges();

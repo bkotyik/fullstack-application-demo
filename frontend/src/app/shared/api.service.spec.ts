@@ -3,14 +3,12 @@ import {ApiService} from './api.service';
 import {XHRBackend, RequestMethod, ResponseOptions, Response, HttpModule} from '@angular/http';
 import {MockBackend, MockConnection} from '@angular/http/testing/mock_backend';
 import Occupation from './models/occupation.model';
-import User from "./models/user.model";
+import User from './models/user.model';
 
 
-describe("Service: ApiService", function () {
-    describe("getOccupations method", function() {
-        /* tslint:disable:quotemark */
-        const mockResponse = [{id: 0, name: "Test", description: "Test occupation"}];
-        /* tslint:enable:quotemark */
+describe('Service: ApiService', function () {
+    describe('getOccupations method', function () {
+        const mockResponse = [{id: 0, name: 'Test', description: 'Test occupation'}];
 
         beforeEach(() => {
             TestBed.configureTestingModule({
@@ -54,7 +52,7 @@ describe("Service: ApiService", function () {
         ));
     });
 
-    describe("getUserMetadata", function() {
+    describe('getUserMetadata', function () {
         /* tslint:disable:quotemark */
         const mockResponse = [{
             "key": "name",
@@ -124,10 +122,10 @@ describe("Service: ApiService", function () {
         ));
     });
 
-    describe("addUser", function() {
+    describe('addUser', function () {
         /* tslint:disable:quotemark */
         const mockResponse = {};
-        const mockRequest = {name: 'test', email:'test@me.com', birthday: undefined, occupation: {id: 0}};
+        const mockRequest = {name: 'test', email: 'test@me.com', birthday: undefined, occupation: {id: 0}};
         /* tslint:enable:quotemark */
 
         beforeEach(() => {

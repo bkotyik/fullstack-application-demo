@@ -4,7 +4,6 @@ import {ApiService} from './api.service';
 import {Observable} from 'rxjs';
 import {Response} from '@angular/http';
 import {Validators} from '@angular/forms';
-import {MinAgeValidator} from './validators/index';
 
 /* tslint:disable:quotemark */
 let fakeSchema = [{
@@ -43,8 +42,8 @@ let apiServiceStub = {
 };
 
 
-describe("Service: ValidationService", function () {
-    describe("getUserValidators", function () {
+describe('Service: ValidationService', function () {
+    describe('getUserValidators', function () {
 
         beforeEach(() => {
             TestBed.configureTestingModule({
@@ -59,11 +58,10 @@ describe("Service: ValidationService", function () {
             });
         });
 
-        it("creates the corresponding angular validators", inject([ValidationService], fakeAsync(function (validationService: ValidationService) {
+        it('creates the corresponding angular validators', inject([ValidationService], fakeAsync(function (validationService: ValidationService) {
             validationService.getUserValidators()
                 .subscribe(
                     (validators: any) => {
-                        console.dir(validators.birthday);
                         expect(validators.name).toBeDefined;
                         expect(validators.email).toBeDefined;
                         expect(validators.birthday).toBeDefined;
