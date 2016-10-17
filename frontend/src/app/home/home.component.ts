@@ -30,8 +30,10 @@ export class HomeComponent implements OnInit {
             );
 
         this.apiService.getOccupations().subscribe((occupations) => {
-            this.occupations = occupations;
-        });
+                this.occupations = occupations;
+            },
+            (error) => this.form = null
+        );
     }
 
 
@@ -56,7 +58,7 @@ export class HomeComponent implements OnInit {
                 (response) => {
                     this.router.navigate(['thankyou']);
                 },
-                (error) => console.log(error.json())
+                (error) => this.form = null
             );
     }
 
