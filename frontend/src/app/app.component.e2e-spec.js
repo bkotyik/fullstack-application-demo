@@ -1,6 +1,6 @@
 describe('App', function () {
 
-    beforeEach(function () {
+    beforeAll(function () {
         browser.get('/');
     });
 
