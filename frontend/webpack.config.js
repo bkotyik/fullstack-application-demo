@@ -19,7 +19,7 @@ var ngtools = require('@ngtools/webpack');
 var ENV = process.env.npm_lifecycle_event;
 var isTestWatch = ENV === 'test-watch';
 var isTest = ENV === 'test' || isTestWatch;
-var isProd = ENV === 'build';
+var isProd = ENV === 'production';
 
 module.exports = function makeWebpackConfig() {
     /**
