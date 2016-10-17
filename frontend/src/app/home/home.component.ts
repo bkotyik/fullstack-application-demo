@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
      * @param $event
      */
     clearOccupationIfEmpty($event) {
-        if ($event.target.value == '') {
+        if ($event.target.value === '') {
             this.form.patchValue({occupation: ''});
         }
     }

@@ -1,4 +1,4 @@
-import Occupation from "./occupation.model";
+import Occupation from './occupation.model';
 
 /**
  * Describes a User with all his/her important properties
@@ -67,7 +67,7 @@ export default class User {
             email: this.Email,
             birthday: this.Birthday,
             occupation: this.Occupation != null ? this.Occupation.toDTO() : undefined
-        }
+        };
     }
 
 }

@@ -23,7 +23,7 @@ export class ApiService {
         } else {
             this.config = {
                 BACKEND_URL: 'http://localhost:3000'
-            }
+            };
         }
     }
 
