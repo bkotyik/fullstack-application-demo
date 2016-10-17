@@ -5,7 +5,7 @@ describe('App', function () {
     });
 
     it('should have a title', function () {
-        expect(browser.getTitle()).toEqual("Angular 2 App | ng2-webpack");
+        expect(browser.getTitle()).toEqual("FullStackJS Application portal");
     });
 
     it('should have <header>', function () {
@@ -17,11 +17,19 @@ describe('App', function () {
     });
 
     it('should have a main title', function () {
-        expect(element(by.css('main h1')).getText()).toEqual('Hello from Angular 2!');
+        expect(element(by.css('nav h1')).getText()).toContain('Application');
     });
 
-    it('should have <footer>', function () {
-        expect(element(by.css('my-app footer')).getText()).toEqual("Webpack Angular 2 Starter");
+    it('should have a sub title', function () {
+        expect(element(by.css('nav h1 small')).getText()).toContain('portal');
+    });
+
+    it('should have the router outlet in main', function () {
+        expect(element(by.css('main router-outlet')).isPresent()).toEqual(true);
+    });
+
+    it('should be 10 columns wide and have 1 column offset', function() {
+       expect(element(by.css('main')).getAttribute('class')).toEqual('col-md-10 offset-md-1');
     });
 
 });
