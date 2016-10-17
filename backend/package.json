@@ -12,7 +12,8 @@
     "tslint": "tslint src/**/*.ts",
     "ts": "tsc -p tsconfig.json --outDir dist/",
     "test:unit": "mocha dist/**/**/*.spec.js",
-    "test:integration": "mocha dist/**/**/*.integration.js"
+    "test:integration": "mocha dist/**/**/*.integration.js",
+    "docker-build": "docker build -t bkotyik/fullstack-backend ."
   },
   "keywords": [
     "node",
