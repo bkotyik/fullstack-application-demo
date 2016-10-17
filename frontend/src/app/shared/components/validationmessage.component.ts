@@ -1,6 +1,9 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {FormControl} from '@angular/forms';
 
+/**
+ * Basic component for displaying error messages under form input
+ */
 @Component({
     selector: 'my-validationmessage',
     template: `
@@ -22,14 +25,24 @@ export class ValidationMessageComponent implements OnChanges {
     constructor() {
     }
 
+    /**
+     * Invoked when a new input to the component is attached
+     * @param changes
+     */
     ngOnChanges(changes: SimpleChanges): void {
         if (this.control != null) {
+            // subscribe to the value changes to be notified if the user manipulates the input
             this.control.valueChanges.subscribe(this.updateValidationMessage.bind(this));
         }
         this.updateValidationMessage();
     }
 
-
+    /**
+     * Returns a validation messages for the known validator errors.
+     * @param validatorName Name of the validator
+     * @param validationResult Result of the validation process
+     * @returns {string} Message to be displayed
+     */
     getValidatorErrorMessage(validatorName: string, validationResult: any) {
         let message: string = null;
         switch (validatorName) {
@@ -49,7 +62,9 @@ export class ValidationMessageComponent implements OnChanges {
         return message;
     }
 
-
+    /**
+     * Updates the messages to be displayed
+     */
     updateValidationMessage() {
         this.messages = [];
         if (this.control != null
